@@ -58,14 +58,14 @@
 .nav-login-cart button {
   cursor: pointer;
   width: 120px;
-  padding: 15px 25px;
+  padding: 10px 25px;
   border: unset;
   border-radius: 50px;
   color: #212121;
   z-index: 1;
   background: #e8e8e8;
   position: relative;
-  font-weight: 1000;
+  font-weight: 700;
   font-size: 17px;
   -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
   box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
@@ -109,8 +109,8 @@
   border-radius: 100%;
   font-size: 10px;
   padding: auto;
-  background: red;
-  color: white;
+  color: black;
+  font-weight: 700;
 }
 
 .nav-login-cart .cart-icon {

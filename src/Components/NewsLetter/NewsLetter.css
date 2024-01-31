@@ -1,0 +1,96 @@
+.newsletter {
+    width: 65%;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    padding: 0px 140px;
+    margin-bottom: 140px;
+    background: linear-gradient(180deg, #fde1ff 0%, #e1ffea22 60%);
+    gap: 30px;
+}
+
+.newsletter h1 {
+    color: #454545;
+    font-size: 55px;
+    font-weight: 600;
+}
+
+.newsletter p {
+    color: #454545;
+    font-size: 20px;
+}
+
+.newsletter div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    width: 730px;
+    height: 60px;
+    border-radius: 80px;
+    border: 1px solid #e3e3e3;
+    transition: all 0.3s ease-in-out;
+}
+
+.newsletter input {
+    width: 500px;
+    margin-left: 30px;
+    border: none;
+    outline: none;
+    color: #616161;
+    font-family: Poppins;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.newsletter div:hover,
+.newsletter div:focus {
+
+    box-shadow: 0 0 5px rgba(72, 77, 72, 0.7);
+}
+
+.newsletter div button {
+    cursor: pointer;
+    width: 120px;
+    padding: 10px 25px;
+    height: 60px;
+    border: unset;
+    border-radius: 50px;
+    color: #212121;
+    z-index: 1;
+    background: #e8e8e8;
+    position: relative;
+    font-weight: 700;
+    font-size: 17px;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+    transition: all 250ms;
+    overflow: hidden;
+}
+
+.newsletter div button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    border-radius: 15px;
+    background-color: #212121;
+    z-index: -1;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+    transition: all 250ms;
+}
+
+.newsletter div button:hover {
+    color: #e8e8e8;
+}
+
+.newsletter div button:hover::before {
+    width: 100%;
+}

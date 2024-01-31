@@ -1,7 +1,7 @@
 .hero {
   height: 100vh;
   background-color: #ffdee9;
-  background-image: linear-gradient(180deg, #ffdee9 0%, #b5fffc 100%);
+  background: linear-gradient(180deg, #fde1ff 0%, #e1ffea22 60%);
   display: flex;
 }
 
@@ -50,6 +50,7 @@
   color: white;
   font-size: 22px;
   font-weight: 500;
+  cursor: pointer;
 }
 
 .hero-right {

@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import "./Navbar.css";
-import { GrCart } from "react-icons/gr";
+import { PiShoppingCartSimpleBold } from "react-icons/pi";
 import { FaShopify } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import Badge from "react-bootstrap/Badge";
 
 const Navbar = () => {
   const [menu, setMenu] = useState("shop");
+  const cartCount = 3;
 
   return (
     <div className="navbar">
@@ -63,9 +65,17 @@ const Navbar = () => {
           <button>Login</button>
         </Link>
         <Link to="/cart">
-          <GrCart className="cart-icon" style={{ fontSize: "40px" }} />
+          <PiShoppingCartSimpleBold
+            className="cart-icon"
+            style={{ fontSize: "40px", color: "black" }}
+          />
         </Link>
-        <div class="nav-cart-count">0</div>
+        {cartCount > 0 && (
+          <Badge pill variant="danger" className="nav-cart-count">
+            {cartCount}
+          </Badge>
+        )}
+        {/* <div class="nav-cart-count">0</div> */}
       </div>
     </div>
   );
