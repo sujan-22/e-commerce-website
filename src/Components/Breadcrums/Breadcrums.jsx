@@ -6,9 +6,9 @@ const Breadcrums = (props) => {
   const { product } = props;
   return (
     <div className="breadcrum">
-      HOME <TfiArrowCircleRight style={{ fontSize: "25px" }} /> SHOP{" "}
-      <TfiArrowCircleRight style={{ fontSize: "25px" }} /> {product.category}{" "}
-      <TfiArrowCircleRight style={{ fontSize: "25px" }} /> {product.name}
+      HOME <TfiArrowCircleRight style={{ fontSize: "18px" }} /> SHOP{" "}
+      <TfiArrowCircleRight style={{ fontSize: "18px" }} /> {product.category}{" "}
+      <TfiArrowCircleRight style={{ fontSize: "18px" }} /> {product.name}
     </div>
   );
 };

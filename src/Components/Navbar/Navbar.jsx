@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Navbar.css";
 import { PiShoppingCartSimpleBold } from "react-icons/pi";
 import { FaShopify } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Badge from "react-bootstrap/Badge";
+import { ShopContext } from "../../Context/ShopContext";
 
 const Navbar = () => {
   const [menu, setMenu] = useState("shop");
-  const cartCount = 3;
+  const { getTotalCartItems } = useContext(ShopContext);
 
   return (
     <div className="navbar">
@@ -70,11 +71,9 @@ const Navbar = () => {
             style={{ fontSize: "40px", color: "black" }}
           />
         </Link>
-        {cartCount > 0 && (
-          <Badge pill variant="danger" className="nav-cart-count">
-            {cartCount}
-          </Badge>
-        )}
+        <Badge pill variant="danger" className="nav-cart-count">
+          {getTotalCartItems()}
+        </Badge>
         {/* <div class="nav-cart-count">0</div> */}
       </div>
     </div>
