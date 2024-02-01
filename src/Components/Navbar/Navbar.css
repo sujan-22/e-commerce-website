@@ -6,8 +6,7 @@
   justify-content: space-around;
   padding: 16px;
   box-shadow: 0 1px 3px -2px black;
-  background-color: white;
-  backdrop-filter: blur(10px);
+  background-color: #e4e4e4;
   align-items: center;
 }
 
@@ -25,6 +24,12 @@
   color: #171717;
   font-size: 38px;
   font-weight: 700;
+  border: none !important;
+  text-decoration: none;
+}
+
+.nav-logo svg {
+  color: black;
 }
 
 .nav-menu {
@@ -32,6 +37,7 @@
   align-items: center;
   list-style: none;
   gap: 50px;
+  background-color: #e4e4e4;
   color: #626262;
   font-size: 20px;
   font-weight: 500;
@@ -44,6 +50,11 @@
   justify-content: center;
   gap: 3px;
   cursor: pointer;
+}
+
+ul li:hover {
+  font-weight: 600;
+  color: #000000;
 }
 
 .nav-menu hr {
@@ -135,6 +146,11 @@ Link {
   display: none;
 }
 
+.nav-menu li.active {
+  color: black;
+  border-bottom: 2px solid #ff4141;
+}
+
 @media (max-width: 1280px) {
   .navbar {
     padding: 12px 50px;
@@ -222,7 +238,7 @@ Link {
     width: 100%;
     position: absolute;
     box-shadow: 0 1px 3px -2px black;
-    background-color: white;
+    background-color: #e4e4e4;
     backdrop-filter: blur(100px);
     justify-content: center;
     top: 50px;
