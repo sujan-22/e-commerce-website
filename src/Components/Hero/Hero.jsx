@@ -12,7 +12,7 @@ const Hero = () => {
         <div>
           <div class="hero-hand-icon">
             <p>new</p>
-            <MdWavingHand className="img" style={{ fontSize: "80px" }} />
+            <MdWavingHand className="img" />
           </div>
           <p>collections</p>
           <p>for everyone</p>

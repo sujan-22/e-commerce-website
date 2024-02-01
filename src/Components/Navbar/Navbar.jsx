@@ -1,80 +1,65 @@
 import React, { useContext, useState } from "react";
 import "./Navbar.css";
 import { PiShoppingCartSimpleBold } from "react-icons/pi";
+import { IoIosArrowDropdownCircle } from "react-icons/io";
 import { FaShopify } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Badge from "react-bootstrap/Badge";
 import { ShopContext } from "../../Context/ShopContext";
 
 const Navbar = () => {
-  const [menu, setMenu] = useState("shop");
+  const [menuOpen, setMenuOpen] = useState(false);
   const { getTotalCartItems } = useContext(ShopContext);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
 
   return (
     <div className="navbar">
       <div className="nav-logo">
-        <FaShopify style={{ fontSize: "40px" }} />
+        <FaShopify className="svg" />
         <p>SHOPPER</p>
       </div>
-      <ul class="nav-menu">
-        <li
-          onClick={() => {
-            setMenu("shop");
-          }}
-        >
-          <Link style={{ textDecoration: "none", color: "#626262" }} to="/">
+      <IoIosArrowDropdownCircle
+        className={`drop-down ${menuOpen ? "open" : ""}`}
+        onClick={toggleMenu}
+      />
+      <ul className={`nav-menu ${menuOpen ? "visible" : ""}`}>
+        <li onClick={() => setMenuOpen(false)}>
+          <Link to="/" style={{ textDecoration: "none", color: "#626262" }}>
             Shop
           </Link>
-          {menu === "shop" ? <hr /> : <></>}
         </li>
-        <li
-          onClick={() => {
-            setMenu("mens");
-          }}
-        >
-          <Link style={{ textDecoration: "none", color: "#626262" }} to="/mens">
+        <li onClick={() => setMenuOpen(false)}>
+          <Link to="/mens" style={{ textDecoration: "none", color: "#626262" }}>
             Men
           </Link>
-          {menu === "mens" ? <hr /> : <></>}
         </li>
-        <li
-          onClick={() => {
-            setMenu("womens");
-          }}
-        >
+        <li onClick={() => setMenuOpen(false)}>
           <Link
-            style={{ textDecoration: "none", color: "#626262" }}
             to="/womens"
+            style={{ textDecoration: "none", color: "#626262" }}
           >
             Women
           </Link>
-          {menu === "womens" ? <hr /> : <></>}
         </li>
-        <li
-          onClick={() => {
-            setMenu("kids");
-          }}
-        >
-          <Link style={{ textDecoration: "none", color: "#626262" }} to="/kids">
+        <li onClick={() => setMenuOpen(false)}>
+          <Link to="/kids" style={{ textDecoration: "none", color: "#626262" }}>
             Kids
           </Link>
-          {menu === "kids" ? <hr /> : <></>}
         </li>
       </ul>
-      <div class="nav-login-cart">
+      <div className="nav-login-cart">
         <Link to="/login">
           <button>Login</button>
         </Link>
         <Link to="/cart">
-          <PiShoppingCartSimpleBold
-            className="cart-icon"
-            style={{ fontSize: "40px", color: "black" }}
-          />
+          <PiShoppingCartSimpleBold className="cart-icon" />
         </Link>
         <Badge pill variant="danger" className="nav-cart-count">
           {getTotalCartItems()}
         </Badge>
-        {/* <div class="nav-cart-count">0</div> */}
       </div>
     </div>
   );

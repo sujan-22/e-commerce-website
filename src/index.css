@@ -3,6 +3,7 @@
 }
 
 body {
+  overflow-x: hidden;
   margin: 0;
   font-family: "Poppins";
   -webkit-font-smoothing: antialiased;

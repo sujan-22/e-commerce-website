@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <div className="footer">
       <div class="footer-logo">
-        <FaShopify style={{ fontSize: "40px" }} />
+        <FaShopify />
         <p>SHOPPER</p>
       </div>
       <ul class="footer-links">
@@ -20,13 +20,13 @@ const Footer = () => {
       </ul>
       <div class="footer-social-icon">
         <div class="footer-icons-container">
-          <FaInstagramSquare style={{ fontSize: "30px" }} />
+          <FaInstagramSquare />
         </div>
         <div class="footer-icons-container">
-          <FaPinterestSquare style={{ fontSize: "30px" }} />
+          <FaPinterestSquare />
         </div>
         <div class="footer-icons-container">
-          <FaSquareWhatsapp style={{ fontSize: "30px" }} />
+          <FaSquareWhatsapp />
         </div>
       </div>
       <div class="footer-copyright">

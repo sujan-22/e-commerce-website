@@ -25,11 +25,11 @@ const ProductDisplay = (props) => {
       <div class="productdisplay-right">
         <h1>{product.name}</h1>
         <div class="productdisplay-right-stars">
-          <MdOutlineStar style={{ fontSize: "23px" }} />
-          <MdOutlineStar style={{ fontSize: "23px" }} />
-          <MdOutlineStar style={{ fontSize: "23px" }} />
-          <MdOutlineStarHalf style={{ fontSize: "23px" }} />
-          <MdOutlineStarBorder style={{ fontSize: "23px" }} />
+          <MdOutlineStar />
+          <MdOutlineStar />
+          <MdOutlineStar />
+          <MdOutlineStarHalf />
+          <MdOutlineStarBorder />
           <p>(122)</p>
         </div>
         <div class="productdisplay-right-prices">

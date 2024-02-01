@@ -31,7 +31,6 @@ const CartItems = () => {
                 </button>
                 <p>${e.new_price * cartItems[e.id]}</p>
                 <MdCancel
-                  style={{ fontSize: "30px", cursor: "pointer", margin: "0px" }}
                   onClick={() => {
                     removeFromCart(e.id);
                   }}

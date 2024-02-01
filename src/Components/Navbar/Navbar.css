@@ -6,14 +6,19 @@
   justify-content: space-around;
   padding: 16px;
   box-shadow: 0 1px 3px -2px black;
-  background-color: #a6aaacad;
+  background-color: white;
   backdrop-filter: blur(10px);
+  align-items: center;
 }
 
 .nav-logo {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.nav-logo svg {
+  font-size: 40px;
 }
 
 .nav-logo p {
@@ -53,6 +58,11 @@
   display: flex;
   align-items: center;
   gap: 45px;
+}
+
+.nav-login-cart svg {
+  font-size: 40px;
+  color: black;
 }
 
 .nav-login-cart button {
@@ -119,4 +129,149 @@
 
 Link {
   text-decoration: none;
+}
+
+.drop-down {
+  display: none;
+}
+
+@media (max-width: 1280px) {
+  .navbar {
+    padding: 12px 50px;
+  }
+
+  .nav-logo svg {
+    font-size: 27px;
+  }
+
+  .nav-logo p {
+    font-size: 27px;
+  }
+
+  .nav-menu {
+    gap: 30px;
+    font-size: 16px;
+  }
+
+  .nav-login-cart {
+    gap: 30px;
+  }
+
+  .nav-login-cart button {
+    width: 100px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .nav-login-cart svg {
+    font-size: 35px;
+  }
+
+  .nav-cart-count {
+    margin-left: -35px;
+    width: 14px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 12px 30px;
+  }
+
+  .nav-menu {
+    gap: 25px;
+    font-size: 14px;
+  }
+
+  .nav-login-cart button {
+    width: 80px;
+    height: 35px;
+    font-size: 14px;
+  }
+
+  .nav-login-cart svg {
+    font-size: 30px;
+  }
+
+  .nav-cart-count {
+    margin-left: -33px;
+    width: 12px;
+  }
+
+  .nav-login-cart button {
+    padding: 0px 10px;
+  }
+}
+
+@media (max-width: 800px) {
+  .navbar {
+    padding: 10px 0px;
+  }
+
+  .drop-down {
+    display: block;
+    margin: auto 0px;
+    font-size: 32px;
+    transition: 0.5s;
+    rotate: -90deg;
+  }
+
+  .nav-menu {
+    display: none;
+    height: 80px;
+    width: 100%;
+    position: absolute;
+    box-shadow: 0 1px 3px -2px black;
+    background-color: white;
+    backdrop-filter: blur(100px);
+    justify-content: center;
+    top: 50px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .nav-menu.visible {
+    display: flex;
+    opacity: 1;
+  }
+
+  .drop-down.open {
+    transform: rotate(90deg);
+  }
+
+  /* Add a fade-in animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  .nav-menu.visible {
+    display: flex;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+}
+
+@media (max-width: 500px) {
+  .navbar {
+    padding: 8px 0px;
+    gap: 0;
+  }
+
+  .nav-logo {
+    transform: scale(0.8);
+  }
+
+  .nav-menu {
+    height: 70px;
+    top: 50px;
+  }
+
+  .nav-login-cart {
+    transform: scale(0.8);
+  }
 }
