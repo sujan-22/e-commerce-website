@@ -45,6 +45,11 @@ const ShopContextProvider = (props) => {
     return totalItems;
   };
 
+  // const setCategory = (category) => {
+  //   setCurrentCategory(category);
+  //   console.log("setCategory", category);
+  // };
+
   const contextValue = {
     getTotalCartItems,
     getTotalCartAmount,

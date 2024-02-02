@@ -4,11 +4,11 @@ import "./DescriptionBox.css";
 const DescriptionBox = () => {
   return (
     <div className="descriptionbox">
-      <div class="descriptionbox-navigator">
-        <div class="descriptionbox-nav-box">Description</div>
-        <div class="descriptionbox-nav-box fade">Reviews (122)</div>
+      <div className="descriptionbox-navigator">
+        <div className="descriptionbox-nav-box">Description</div>
+        <div className="descriptionbox-nav-box fade">Reviews (122)</div>
       </div>
-      <div class="descriptionbox-description">
+      <div className="descriptionbox-description">
         <p>
           I recently purchased the black hoodie from this store, and I am
           thrilled with my choice! The quality is outstanding – the fabric is

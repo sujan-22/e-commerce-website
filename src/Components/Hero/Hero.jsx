@@ -7,22 +7,22 @@ import HeroModel from "../Assets/hero_model.png";
 const Hero = () => {
   return (
     <div className="hero">
-      <div class="hero-left">
+      <div className="hero-left">
         <h2>NEW ARRIVALS ONLY</h2>
         <div>
-          <div class="hero-hand-icon">
+          <div className="hero-hand-icon">
             <p>new</p>
             <MdWavingHand className="img" />
           </div>
           <p>collections</p>
           <p>for everyone</p>
         </div>
-        <div class="hero-latest-btn">
+        <div className="hero-latest-btn">
           <div>Latest Collection</div>
           <BsArrowRightCircleFill style={{ fontSize: "25px" }} />
         </div>
       </div>
-      <div class="hero-right">
+      <div className="hero-right">
         <img src={HeroModel} alt="" />
       </div>
     </div>

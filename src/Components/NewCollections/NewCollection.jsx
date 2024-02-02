@@ -8,7 +8,7 @@ const NewCollection = () => {
     <div className="new-collection">
       <h1>NEW COLLECTIONS</h1>
       <hr />
-      <div class="collections">
+      <div className="collections">
         {new_collection.map((item, i) => {
           return (
             <Item

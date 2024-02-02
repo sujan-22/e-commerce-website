@@ -7,29 +7,29 @@ import "./Footer.css";
 const Footer = () => {
   return (
     <div className="footer">
-      <div class="footer-logo">
+      <div className="footer-logo">
         <FaShopify />
-        <p>SHOPPER</p>
+        <p>SUBLIME</p>
       </div>
-      <ul class="footer-links">
+      <ul className="footer-links">
         <li>Company</li>
         <li>Products</li>
         <li>Offices</li>
         <li>About</li>
         <li>Contact</li>
       </ul>
-      <div class="footer-social-icon">
-        <div class="footer-icons-container">
+      <div className="footer-social-icon">
+        <div className="footer-icons-container">
           <FaInstagramSquare />
         </div>
-        <div class="footer-icons-container">
+        <div className="footer-icons-container">
           <FaPinterestSquare />
         </div>
-        <div class="footer-icons-container">
+        <div className="footer-icons-container">
           <FaSquareWhatsapp />
         </div>
       </div>
-      <div class="footer-copyright">
+      <div className="footer-copyright">
         <hr />
         <p>
           Copyright <FaCopyright /> 2024 - All rights reserved.

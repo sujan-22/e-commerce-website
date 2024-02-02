@@ -34,6 +34,19 @@ import p33_img from "./product_33.png";
 import p34_img from "./product_34.png";
 import p35_img from "./product_35.png";
 import p36_img from "./product_36.png";
+import p37_img from "./product_37.png";
+import p38_img from "./product_38.png";
+import p39_img from "./product_39.png";
+import p40_img from "./product_40.png";
+import p41_img from "./product_41.png";
+import p42_img from "./product_42.png";
+import p43_img from "./product_43.png";
+import p44_img from "./product_44.png";
+import p45_img from "./product_45.png";
+import p46_img from "./product_46.png";
+import p47_img from "./product_47.png";
+import p48_img from "./product_48.png";
+import p49_img from "./product_49.png";
 
 let all_product = [
   {
@@ -323,6 +336,110 @@ let all_product = [
     image: p36_img,
     new_price: 85.0,
     old_price: 120.5,
+  },
+  {
+    id: 37,
+    name: "Elegant Silver Bracelet",
+    category: "accessory",
+    image: p37_img,
+    new_price: 45.0,
+    old_price: 75.5,
+  },
+  {
+    id: 38,
+    name: "Pearl Drop Earrings",
+    category: "accessory",
+    image: p38_img,
+    new_price: 30.0,
+    old_price: 50.5,
+  },
+  {
+    id: 39,
+    name: "Stylish Gold Necklace",
+    category: "accessory",
+    image: p39_img,
+    new_price: 60.0,
+    old_price: 90.5,
+  },
+  {
+    id: 40,
+    name: "Crystal-Studded Ring",
+    category: "accessory",
+    image: p40_img,
+    new_price: 25.0,
+    old_price: 40.5,
+  },
+  {
+    id: 41,
+    name: "Leather Band Watch",
+    category: "accessory",
+    image: p41_img,
+    new_price: 35.0,
+    old_price: 55.5,
+  },
+  {
+    id: 42,
+    name: "Charm Bracelet",
+    category: "accessory",
+    image: p42_img,
+    new_price: 50.0,
+    old_price: 80.5,
+  },
+  {
+    id: 43,
+    name: "Silver Hoop Earrings",
+    category: "accessory",
+    image: p43_img,
+    new_price: 28.0,
+    old_price: 45.5,
+  },
+  {
+    id: 44,
+    name: "Beaded Anklet",
+    category: "accessory",
+    image: p44_img,
+    new_price: 18.0,
+    old_price: 30.5,
+  },
+  {
+    id: 45,
+    name: "Vintage Brooch",
+    category: "accessory",
+    image: p45_img,
+    new_price: 42.0,
+    old_price: 65.5,
+  },
+  {
+    id: 46,
+    name: "Embossed Leather Wallet",
+    category: "accessory",
+    image: p46_img,
+    new_price: 55.0,
+    old_price: 85.5,
+  },
+  {
+    id: 47,
+    name: "Retro Sunglasses",
+    category: "accessory",
+    image: p47_img,
+    new_price: 32.0,
+    old_price: 50.5,
+  },
+  {
+    id: 48,
+    name: "Cufflink Set",
+    category: "accessory",
+    image: p48_img,
+    new_price: 38.0,
+    old_price: 60.5,
+  },
+  {
+    id: 49,
+    name: "Silk Scarf",
+    category: "accessory",
+    image: p49_img,
+    new_price: 20.0,
+    old_price: 35.5,
   },
 ];
 

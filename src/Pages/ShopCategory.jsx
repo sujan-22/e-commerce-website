@@ -10,15 +10,15 @@ const ShopCategory = (props) => {
   return (
     <div className="shop-category">
       <img className="shopcategory-banner" src={props.banner} alt="" />
-      <div class="shopcategory-indexSort">
+      <div className="shopcategory-indexSort">
         <p>
           <span>Showing 1-12</span> out of 36 products
         </p>
-        <div class="shopcategory-sort">
+        <div className="shopcategory-sort">
           Sort by <IoIosArrowDropdown style={{ fontSize: "22px" }} />
         </div>
       </div>
-      <div class="shopcategory-products">
+      <div className="shopcategory-products">
         {all_products.map((item, i) => {
           if (props.category === item.category) {
             return (
@@ -36,7 +36,7 @@ const ShopCategory = (props) => {
           }
         })}
       </div>
-      <div class="shopcategory-loadmore">Explore More</div>
+      <div className="shopcategory-loadmore">Explore More</div>
     </div>
   );
 };

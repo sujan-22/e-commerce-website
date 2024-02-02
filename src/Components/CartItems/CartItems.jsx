@@ -42,30 +42,30 @@ const CartItems = () => {
         }
         return null; // Ensure you have a return statement
       })}
-      <div class="cartitems-down">
-        <div class="cartitems-total">
+      <div className="cartitems-down">
+        <div className="cartitems-total">
           <h1>Cart Total</h1>
           <div>
-            <div class="cartitems-total-item">
+            <div className="cartitems-total-item">
               <p>Subtotal</p>
               <p>${getTotalCartAmount()}</p>
             </div>
             <hr />
-            <div class="cartitems-total-item">
+            <div className="cartitems-total-item">
               <p>Shipping Fee</p>
               <p>Free</p>
             </div>
             <hr />
-            <div class="cartitems-total-item">
+            <div className="cartitems-total-item">
               <h3>Total</h3>
               <h3>${getTotalCartAmount()}</h3>
             </div>
           </div>
           <button>PROCEED TO CHECKOUT</button>
         </div>
-        <div class="cartitems-promocode">
+        <div className="cartitems-promocode">
           <p>If you have a promo code, Enter it here</p>
-          <div class="cartitems-promobox">
+          <div className="cartitems-promobox">
             <input type="text" placeholder="promo code" />
             <button>Submit</button>
           </div>

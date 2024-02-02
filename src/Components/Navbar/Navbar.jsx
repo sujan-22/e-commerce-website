@@ -22,7 +22,7 @@ const Navbar = () => {
         <Link to="/">
           <FaShopify className="svg" />
         </Link>
-        <p>SHOPPER</p>
+        <p>SUBLIME</p>
       </div>
       <IoIosArrowDropdownCircle
         className={`drop-down ${menuOpen ? "open" : ""}`}
@@ -50,6 +50,12 @@ const Navbar = () => {
         <NavItem
           to="/kids"
           label="Kids"
+          currentPath={location.pathname}
+          setMenuOpen={setMenuOpen}
+        />
+        <NavItem
+          to="/accessories"
+          label="Accessories"
           currentPath={location.pathname}
           setMenuOpen={setMenuOpen}
         />

@@ -88,6 +88,7 @@ h1 {
 @media (max-width: 500px) {
     .popular {
         height: 90vh;
+        margin-bottom: 20px;
     }
 
     .popular-item {
