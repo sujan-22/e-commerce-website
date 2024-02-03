@@ -61,9 +61,20 @@ const Navbar = () => {
         />
       </ul>
       <div className="nav-login-cart">
-        <Link to="/login">
-          <button>Login</button>
-        </Link>
+        {localStorage.getItem("auth_token") ? (
+          <button
+            onClick={() => {
+              localStorage.removeItem("auth_token");
+              window.location.replace("/");
+            }}
+          >
+            Logout
+          </button>
+        ) : (
+          <Link to="/login">
+            <button>Login</button>
+          </Link>
+        )}
         <Link to="/cart">
           <PiShoppingCartSimpleBold className="cart-icon" />
         </Link>

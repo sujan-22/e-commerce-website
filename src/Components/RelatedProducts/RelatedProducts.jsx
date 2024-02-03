@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import "./RelatedProducts.css";
-import data_product from "../Assets/all_product";
+import { ShopContext } from "../../Context/ShopContext";
 import Item from "../Items/Item";
+import "./RelatedProducts.css";
 
 const RelatedProducts = () => {
   const { productId } = useParams();
   const [currentCategory, setCurrentCategory] = useState("all");
+  const { all_products } = useContext(ShopContext);
 
   useEffect(() => {
     const id = parseInt(productId, 10);
@@ -24,7 +25,7 @@ const RelatedProducts = () => {
     }
   }, [productId]);
 
-  const relatedProducts = data_product.filter(
+  const relatedProducts = all_products.filter(
     (item) => item.category === currentCategory
   );
 

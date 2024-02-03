@@ -230,6 +230,7 @@ Link {
     font-size: 32px;
     transition: 0.5s;
     rotate: -90deg;
+    cursor: pointer;
   }
 
   .nav-menu {

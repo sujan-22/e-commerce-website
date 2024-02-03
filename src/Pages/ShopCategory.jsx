@@ -1,25 +1,61 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./CSS/ShopCategory.css";
 import { ShopContext } from "../Context/ShopContext";
-import { IoIosArrowDropdown } from "react-icons/io";
 import Item from "../Components/Items/Item";
+import { Dropdown } from "primereact/dropdown";
+import "primereact/resources/themes/saga-blue/theme.css";
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
 
 const ShopCategory = (props) => {
   const { all_products } = useContext(ShopContext);
+  const [sortOption, setSortOption] = useState(null);
+
+  const handleSortChange = (e) => {
+    setSortOption(e.value);
+  };
+
+  const filteredProducts = all_products.filter(
+    (item) => item.category === props.category
+  );
+
+  const sortProducts = (products) => {
+    switch (sortOption) {
+      case "lowToHigh":
+        return products.slice().sort((a, b) => a.new_price - b.new_price);
+      case "highToLow":
+        return products.slice().sort((a, b) => b.new_price - a.new_price);
+      default:
+        return products;
+    }
+  };
+
+  const cities = [
+    { label: "Default", value: null },
+    { label: "Price: Low to High", value: "lowToHigh" },
+    { label: "Price: High to Low", value: "highToLow" },
+  ];
 
   return (
     <div className="shop-category">
       <img className="shopcategory-banner" src={props.banner} alt="" />
       <div className="shopcategory-indexSort">
         <p>
-          <span>Showing 1-12</span> out of 36 products
+          <span>Showing 1-{filteredProducts.length}</span> out of{" "}
+          {filteredProducts.length} products
         </p>
-        <div className="shopcategory-sort">
-          Sort by <IoIosArrowDropdown style={{ fontSize: "22px" }} />
+        <div className="custom-dropdown">
+          <Dropdown
+            value={sortOption}
+            options={cities}
+            onChange={handleSortChange}
+            optionLabel="label"
+            placeholder="Filter"
+          />
         </div>
       </div>
       <div className="shopcategory-products">
-        {all_products.map((item, i) => {
+        {sortProducts(all_products).map((item, i) => {
           if (props.category === item.category) {
             return (
               <Item
