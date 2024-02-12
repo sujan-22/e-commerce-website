@@ -107,6 +107,7 @@
     background: black;
     color: white;
     cursor: pointer;
+    margin: auto -15px;
 }
 
 @media (max-width: 1280px) {
