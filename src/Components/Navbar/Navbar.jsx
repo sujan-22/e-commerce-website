@@ -36,26 +36,32 @@ const Navbar = () => {
           setMenuOpen={setMenuOpen}
         />
         <NavItem
-          to="/mens"
-          label="Men"
+          to="/clothing"
+          label="Clothing"
           currentPath={location.pathname}
           setMenuOpen={setMenuOpen}
         />
         <NavItem
-          to="/womens"
-          label="Women"
+          to="/electronics"
+          label="Electronics  "
           currentPath={location.pathname}
           setMenuOpen={setMenuOpen}
         />
         <NavItem
-          to="/kids"
-          label="Kids"
+          to="/furniture"
+          label="Furniture"
           currentPath={location.pathname}
           setMenuOpen={setMenuOpen}
         />
         <NavItem
-          to="/accessories"
-          label="Accessories"
+          to="/shoes"
+          label="Shoes"
+          currentPath={location.pathname}
+          setMenuOpen={setMenuOpen}
+        />
+        <NavItem
+          to="/all"
+          label="All"
           currentPath={location.pathname}
           setMenuOpen={setMenuOpen}
         />

@@ -10,25 +10,45 @@ import "primeicons/primeicons.css";
 const ShopCategory = (props) => {
   const { all_products } = useContext(ShopContext);
   const [sortOption, setSortOption] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsPerPage = 6;
 
   const handleSortChange = (e) => {
     setSortOption(e.value);
   };
 
   const filteredProducts = all_products.filter(
-    (item) => item.category === props.category
+    (item) =>
+      item.category.name === props.category && item.description.length > 5
   );
 
-  const sortProducts = (products) => {
-    switch (sortOption) {
-      case "lowToHigh":
-        return products.slice().sort((a, b) => a.new_price - b.new_price);
-      case "highToLow":
-        return products.slice().sort((a, b) => b.new_price - a.new_price);
-      default:
-        return products;
-    }
+  const sortedProducts = filteredProducts;
+
+  const totalPages = Math.ceil(sortedProducts.length / productsPerPage);
+
+  const handleNextPage = () => {
+    setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
+    setTimeout(scrollToTop, 100);
   };
+
+  const handlePrevPage = () => {
+    setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
+    setTimeout(scrollToTop, 100);
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // Add smooth scrolling behavior
+    });
+  };
+
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = sortedProducts.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct
+  );
 
   const cities = [
     { label: "Default", value: null },
@@ -38,11 +58,12 @@ const ShopCategory = (props) => {
 
   return (
     <div className="shop-category">
-      <img className="shopcategory-banner" src={props.banner} alt="" />
       <div className="shopcategory-indexSort">
         <p>
-          <span>Showing 1-{filteredProducts.length}</span> out of{" "}
-          {filteredProducts.length} products
+          <span>
+            Showing {indexOfFirstProduct + 1}-{indexOfLastProduct}
+          </span>{" "}
+          out of {sortedProducts.length} products
         </p>
         <div className="custom-dropdown">
           <Dropdown
@@ -55,24 +76,18 @@ const ShopCategory = (props) => {
         </div>
       </div>
       <div className="shopcategory-products">
-        {sortProducts(all_products).map((item, i) => {
-          if (props.category === item.category) {
-            return (
-              <Item
-                key={i}
-                id={item.id}
-                name={item.name}
-                image={item.image}
-                new_price={item.new_price}
-                old_price={item.old_price}
-              />
-            );
-          } else {
-            return null;
-          }
-        })}
+        {currentProducts.map((product, i) => (
+          <Item key={product.id} product={product} />
+        ))}
       </div>
-      <div className="shopcategory-loadmore">Explore More</div>
+      <div className="pagination">
+        <button onClick={handlePrevPage} disabled={currentPage === 1}>
+          Prev
+        </button>
+        <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+          Next
+        </button>
+      </div>
     </div>
   );
 };

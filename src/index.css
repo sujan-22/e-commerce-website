@@ -8,9 +8,23 @@ body {
   font-family: "Poppins";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #02050f;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  scroll-behavior: smooth;
+}
+::-webkit-scrollbar-track {
+  background: #274656;
+  border-radius: 100px;
+}
+::-webkit-scrollbar-thumb {
+  background: #01111a;
+  border-radius: 100px;
 }

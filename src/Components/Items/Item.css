@@ -1,51 +1,91 @@
 .item {
-  width: 280px;
-  transition: transform 0.7s, box-shadow 0.7s;
+  width: 400px;
+  min-height: 600px; /* Minimum height */
+  max-height: none;
   border-radius: 10px;
+  overflow: hidden;
+  color: white;
+  margin: 5rem;
 }
 
-.item img {
-  width: 280px;
-  border-radius: 10px;
+.item-image {
+  border-radius: 10px 10px 0 0;
 }
 
-.item p {
-  margin: 6px 0;
-  text-align: center;
+.div-image {
+  height: 400px;
+  background-color: #2e32405f;
+}
+
+.item-info {
+  background-color: rgba(21, 47, 69, 0.55); /* Semi-transparent color */
+  backdrop-filter: blur(30px); /* Apply blur effect */
+  -webkit-backdrop-filter: blur(30px); /* For Safari */
+  padding: 20px;
+}
+
+.item-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.item-category {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 5px;
+}
+
+.item-description {
+  font-size: 16px;
+  margin-bottom: 10px;
 }
 
 .item-prices {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  border-radius: 10px;
-  background-color: #f4f4f4;
-}
-
-.item-price-new {
-  color: #780000;
+  justify-content: space-between;
+  color: white;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: bold;
 }
 
-.item-price-old {
-  color: #8c8c8c;
-  font-size: 18px;
-  font-weight: 600;
-  text-decoration: line-through;
-}
-
-.item:hover {
-  transform: scale(1.02);
-  transition: 0.7s;
-  box-shadow: 0 5px 5px #4c765a;
+.add-to-cart-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.item:hover img {
-  opacity: 0.8;
-  transition: opacity 0.7s;
+.add-to-cart-button:hover {
+  background-color: #0056b3;
+}
+ul .slick-dots .slick-thumb {
+  display: flex !important;
+}
+/* Custom styling for slick dots */
+.slick-dots {
+  position: absolute;
+  bottom: 50px; /* Adjust as needed */
+  width: 100%;
+  list-style: none;
+  display: flex !important;
+  right: 15px;
+  justify-content: space-evenly;
+}
+
+.slick-dots img {
+  width: 55px; /* Make thumbnail images fill their container */
+  height: auto; /* Maintain aspect ratio */
+  border: 2px solid transparent; /* Add border to make dots visible */
+  border-radius: 5px; /* Optional: Add border radius for rounded dots */
+}
+
+.slick-dots .slick-active img {
+  border-color: #fff; /* Style for active dot */
 }
 
 @media (max-width: 1280px) {
@@ -98,11 +138,9 @@
 @media (max-width: 500px) {
   .item {
     width: 160px;
-
   }
 
   .item img {
     width: 160px;
   }
-
 }

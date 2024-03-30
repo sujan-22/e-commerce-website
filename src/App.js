@@ -1,4 +1,3 @@
-import "./App.css";
 import Navbar from "./Components/Navbar/Navbar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Shop from "./Pages/Shop";
@@ -19,20 +18,28 @@ function App() {
         <Routes>
           <Route path="/" element={<Shop />} />
           <Route
-            path="/mens"
-            element={<ShopCategory banner={men_banner} category="men" />}
+            path="/clothing"
+            element={<ShopCategory banner={men_banner} category="nuevo" />}
           />
           <Route
-            path="/womens"
-            element={<ShopCategory banner={women_banner} category="women" />}
+            path="/electronics"
+            element={
+              <ShopCategory banner={women_banner} category="Electronics" />
+            }
           />
           <Route
-            path="/kids"
-            element={<ShopCategory banner={kid_banner} category="kid" />}
+            path="/furniture"
+            element={<ShopCategory banner={kid_banner} category="kawaii" />}
           />
           <Route
-            path="/accessories"
-            element={<ShopCategory banner={kid_banner} category="accessory" />}
+            path="/shoes"
+            element={<ShopCategory banner={kid_banner} category="Shoes" />}
+          />
+          <Route
+            path="/all"
+            element={
+              <ShopCategory banner={kid_banner} category="Miscellaneous" />
+            }
           />
           <Route path="/product" element={<Product />}>
             <Route path=":productId" element={<Product />} />
