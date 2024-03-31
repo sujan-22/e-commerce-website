@@ -1,7 +1,5 @@
 import React from "react";
-import { FaInstagramSquare, FaCopyright } from "react-icons/fa";
-import { FaPinterestSquare, FaShopify } from "react-icons/fa";
-import { FaSquareWhatsapp } from "react-icons/fa6";
+import { FaCopyright } from "react-icons/fa";
 import "./Footer.css";
 
 const Footer = () => {

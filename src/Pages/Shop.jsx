@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Shop.css"; // Import your custom CSS file
+import DummyProduct from "./DummyProduct";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
@@ -81,25 +82,27 @@ const Shop = () => {
   };
 
   return (
-    <div className="shop-carousel">
-      <Slider {...settings}>
-        {products.map((product) => (
-          <div key={product.id}>
-            <div className="shop-image-container">
-              <img src={product.images[0]} alt={`Product ${product.id}`} />
-              <span className="category-text">CATEGORY:</span>
-              <span className="category">{product.category.name}</span>
-              <Link
-                to={getCategoryPath(product.category.name)}
-                className="category-link"
-              >
-                <button className="goto">EXPLORE MORE</button>
-              </Link>
+    <>
+      <div className="shop-carousel">
+        <Slider {...settings}>
+          {products.map((product) => (
+            <div key={product.id}>
+              <div className="shop-image-container">
+                <img src={product.images[0]} alt={`Product ${product.id}`} />
+                <span className="category-text">CATEGORY:</span>
+                <span className="category">{product.category.name}</span>
+                <Link
+                  to={getCategoryPath(product.category.name)}
+                  className="category-link"
+                >
+                  <button className="goto">EXPLORE MORE</button>
+                </Link>
+              </div>
             </div>
-          </div>
-        ))}
-      </Slider>
-    </div>
+          ))}
+        </Slider>
+      </div>
+    </>
   );
 };
 

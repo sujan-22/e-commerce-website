@@ -125,7 +125,7 @@
     width: 95%;
     margin: 10px auto;
     column-gap: 20px;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     /* Adjust this value */
   }
 
@@ -137,9 +137,9 @@
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   .shopcategory-products {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
 
   .custom-dropdown .p-dropdown-label {
