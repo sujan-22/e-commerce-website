@@ -1,8 +1,9 @@
-import React, { useContext, useState } from "react";
+import React from "react";
 import "./Navbar.css";
 import { PiShoppingCartSimpleBold } from "react-icons/pi";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 import { FaShopify } from "react-icons/fa";
+import { useContext, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Badge from "react-bootstrap/Badge";
 import { ShopContext } from "../../Context/ShopContext";
@@ -31,37 +32,13 @@ const Navbar = () => {
       <ul className={`nav-menu ${menuOpen ? "visible" : ""}`}>
         <NavItem
           to="/"
-          label="Shop"
+          label="Home"
           currentPath={location.pathname}
           setMenuOpen={setMenuOpen}
         />
         <NavItem
-          to="/clothing"
-          label="Clothing"
-          currentPath={location.pathname}
-          setMenuOpen={setMenuOpen}
-        />
-        <NavItem
-          to="/electronics"
-          label="Electronics  "
-          currentPath={location.pathname}
-          setMenuOpen={setMenuOpen}
-        />
-        <NavItem
-          to="/furniture"
-          label="Furniture"
-          currentPath={location.pathname}
-          setMenuOpen={setMenuOpen}
-        />
-        <NavItem
-          to="/shoes"
-          label="Shoes"
-          currentPath={location.pathname}
-          setMenuOpen={setMenuOpen}
-        />
-        <NavItem
-          to="/all"
-          label="All"
+          to="/store"
+          label="Store"
           currentPath={location.pathname}
           setMenuOpen={setMenuOpen}
         />

@@ -1,6 +1,6 @@
 .item {
   width: 500px;
-  min-height: 600px; /* Minimum height */
+  min-height: 600px !important; /* Minimum height */
   max-height: none;
   border-radius: 10px;
   overflow: hidden !important;
@@ -23,6 +23,8 @@
   -webkit-backdrop-filter: blur(30px);
   padding: 20px;
   margin-top: 10px;
+  max-height: 300px; /* Fixed height for the item info */
+  overflow-y: auto;
 }
 
 .item-title {

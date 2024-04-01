@@ -1,11 +1,16 @@
 import React, { useContext } from "react";
 import "./CartItems.css";
 import { ShopContext } from "../../Context/ShopContext";
-import { MdCancel } from "react-icons/md";
+import { MdRemoveCircleOutline, MdAddCircleOutline } from "react-icons/md";
 
 const CartItems = () => {
-  const { getTotalCartAmount, all_products, cartItems, removeFromCart } =
-    useContext(ShopContext);
+  const {
+    getTotalCartAmount,
+    all_products,
+    cartItems,
+    removeFromCart,
+    addToCart,
+  } = useContext(ShopContext);
 
   return (
     <div className="cartitems">
@@ -15,26 +20,38 @@ const CartItems = () => {
         <p>Price</p>
         <p>Quantity</p>
         <p>Total</p>
-        <p>Remove</p>
       </div>
       <hr />
-      {all_products.map((e) => {
-        if (cartItems[e.id] > 0) {
+      {all_products.map((product) => {
+        if (cartItems[product.id] > 0) {
           return (
-            <div key={e.id}>
+            <div key={product.id}>
               <div className="cartitems-format cartitems-format-main">
-                <img src={e.image} alt="" className="carticon-product-icon" />
-                <p>{e.name}</p>
-                <p>${e.new_price}</p>
-                <button className="cartitems-quantity">
-                  {cartItems[e.id]}
-                </button>
-                <p>${e.new_price * cartItems[e.id]}</p>
-                <MdCancel
-                  onClick={() => {
-                    removeFromCart(e.id);
-                  }}
+                <img
+                  src={product.images[0]}
+                  alt=""
+                  className="carticon-product-icon"
                 />
+                <p>{product.title}</p>
+                <p>${product.price}</p>
+                <div className="quantity-controls">
+                  <MdRemoveCircleOutline
+                    onClick={() => {
+                      removeFromCart(product.id);
+                    }}
+                    style={{ fontSize: "24px" }}
+                  />
+                  <p className="cartitems-quantity">{cartItems[product.id]}</p>
+                  <MdAddCircleOutline
+                    onClick={() => {
+                      addToCart(product.id);
+                    }}
+                    style={{ fontSize: "24px" }}
+                  />
+                </div>
+                <p className="totalPrice">
+                  ${product.price * cartItems[product.id]}
+                </p>
               </div>
               <hr />
             </div>

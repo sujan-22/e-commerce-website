@@ -8,7 +8,7 @@ import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 
 const ShopCategory = (props) => {
-  const { all_products } = useContext(ShopContext);
+  const { all_products, addToCart } = useContext(ShopContext);
   const [sortOption, setSortOption] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 6;
@@ -27,12 +27,15 @@ const ShopCategory = (props) => {
   const totalPages = Math.ceil(sortedProducts.length / productsPerPage);
 
   const handleNextPage = () => {
-    setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
+    const nextPage = currentPage + 1;
+    const lastProductOnPage = nextPage * productsPerPage;
+    setCurrentPage(nextPage);
     setTimeout(scrollToTop, 100);
   };
 
   const handlePrevPage = () => {
-    setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
+    const prevPage = currentPage - 1;
+    setCurrentPage(prevPage);
     setTimeout(scrollToTop, 100);
   };
 
@@ -49,6 +52,10 @@ const ShopCategory = (props) => {
     indexOfFirstProduct,
     indexOfLastProduct
   );
+  const lastDisplayedIndex = Math.min(
+    indexOfLastProduct,
+    sortedProducts.length
+  );
 
   const cities = [
     { label: "Default", value: null },
@@ -61,10 +68,11 @@ const ShopCategory = (props) => {
       <div className="shopcategory-indexSort">
         <p>
           <span>
-            Showing {indexOfFirstProduct + 1}-{indexOfLastProduct}
+            Showing {indexOfFirstProduct + 1}-{lastDisplayedIndex} out of{" "}
+            {sortedProducts.length} products
           </span>{" "}
-          out of {sortedProducts.length} products
         </p>
+
         <div className="custom-dropdown">
           <Dropdown
             value={sortOption}
@@ -77,7 +85,7 @@ const ShopCategory = (props) => {
       </div>
       <div className="shopcategory-products">
         {currentProducts.map((product, i) => (
-          <Item key={product.id} product={product} />
+          <Item key={product.id} product={product} addToCart={addToCart} />
         ))}
       </div>
       <div className="pagination">

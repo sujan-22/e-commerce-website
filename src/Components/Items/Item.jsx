@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Item.css";
 
-const Item = ({ product }) => {
+const Item = ({ product, addToCart }) => {
   if (!product) {
     return null;
   }
@@ -25,6 +25,10 @@ const Item = ({ product }) => {
     draggable: true,
     fade: true,
     dotsClass: "slick-dots slick-thumb",
+  };
+
+  const handleAddToCart = () => {
+    addToCart(product.id); // Call the addToCart function with the product ID
   };
 
   return (
@@ -52,7 +56,9 @@ const Item = ({ product }) => {
         <div className="item-prices">
           <div className="item-price-new">${product.price}</div>
         </div>
-        <button className="add-to-cart-button">Add to Cart</button>
+        <button className="add-to-cart-button" onClick={handleAddToCart}>
+          Add to Cart
+        </button>
       </div>
     </div>
   );
