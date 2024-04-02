@@ -28,7 +28,6 @@ const ShopCategory = (props) => {
 
   const handleNextPage = () => {
     const nextPage = currentPage + 1;
-    const lastProductOnPage = nextPage * productsPerPage;
     setCurrentPage(nextPage);
     setTimeout(scrollToTop, 100);
   };

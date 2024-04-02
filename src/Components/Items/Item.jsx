@@ -52,7 +52,6 @@ const Item = ({ product, addToCart }) => {
       <div className="item-info">
         <p className="item-title">{product.title}</p>
         <p className="item-category">Category: {product.category.name}</p>
-        <p className="item-description">{product.description}</p>
         <div className="item-prices">
           <div className="item-price-new">${product.price}</div>
         </div>

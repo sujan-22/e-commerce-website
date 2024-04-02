@@ -3,19 +3,34 @@ import "./Navbar.css";
 import { PiShoppingCartSimpleBold } from "react-icons/pi";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 import { FaShopify } from "react-icons/fa";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Badge from "react-bootstrap/Badge";
 import { ShopContext } from "../../Context/ShopContext";
+import HamburgerMenu from "../HamburgerMenu/HamburgerMenu";
+import { specialItems } from "../../data";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { getTotalCartItems } = useContext(ShopContext);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const location = useLocation();
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <div className="navbar">
@@ -25,23 +40,21 @@ const Navbar = () => {
         </Link>
         <p>SUBLIME</p>
       </div>
+
       <IoIosArrowDropdownCircle
         className={`drop-down ${menuOpen ? "open" : ""}`}
         onClick={toggleMenu}
       />
       <ul className={`nav-menu ${menuOpen ? "visible" : ""}`}>
-        <NavItem
-          to="/"
-          label="Home"
-          currentPath={location.pathname}
-          setMenuOpen={setMenuOpen}
-        />
-        <NavItem
-          to="/store"
-          label="Store"
-          currentPath={location.pathname}
-          setMenuOpen={setMenuOpen}
-        />
+        {specialItems.map((item, index) => (
+          <NavItem
+            key={index}
+            to={item.to}
+            label={item.label}
+            currentPath={location.pathname}
+            setMenuOpen={setMenuOpen}
+          />
+        ))}
       </ul>
       <div className="nav-login-cart">
         {localStorage.getItem("auth_token") ? (
@@ -65,6 +78,9 @@ const Navbar = () => {
           {getTotalCartItems()}
         </Badge>
       </div>
+      {windowWidth <= 800 && !location.pathname.includes("/store") && (
+        <HamburgerMenu />
+      )}
     </div>
   );
 };

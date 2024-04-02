@@ -1,6 +1,6 @@
 .item {
-  width: 500px;
-  min-height: 600px !important; /* Minimum height */
+  width: 400px;
+  min-height: 600px;
   max-height: none;
   border-radius: 10px;
   overflow: hidden !important;
@@ -23,13 +23,12 @@
   -webkit-backdrop-filter: blur(30px);
   padding: 20px;
   margin-top: 10px;
-  max-height: 300px; /* Fixed height for the item info */
-  overflow-y: auto;
+  max-height: 350px;
+  height: 200px;
 }
 
 .item-title {
   font-size: 18px;
-  font-weight: bold;
   margin-bottom: 5px;
 }
 
@@ -53,7 +52,7 @@
 }
 
 .add-to-cart-button {
-  width: 100%;
+  width: 90%;
   padding: 10px;
   background: transparent;
   color: #fff;
@@ -62,6 +61,10 @@
   border-radius: 5px;
   cursor: pointer;
   transition: opacity 0.3s;
+  position: absolute;
+  bottom: 20px; /* Adjust as needed */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%);
 }
 
 .add-to-cart-button:hover {
@@ -116,9 +119,10 @@ ul .slick-dots .slick-thumb {
     backdrop-filter: blur(30px); /* Apply blur effect */
     -webkit-backdrop-filter: blur(30px); /* For Safari */
     padding: 20px;
-    overflow-y: auto; /* Enable vertical scrolling */
-    max-height: 300px; /* Set a maximum height for scrolling */
+    max-height: 250px;
+    height: 200px;
     margin-top: 10px;
+    border-radius: 0 0 10px 10px;
   }
 
   .item-price-new,
@@ -174,7 +178,8 @@ ul .slick-dots .slick-thumb {
   }
 
   .item-price-new,
-  .item-price-old {
+  .item-price-old,
+  .item-title {
     font-size: 16px;
   }
 }
@@ -185,6 +190,10 @@ ul .slick-dots .slick-thumb {
     font-size: 14px;
     max-height: 600px;
     overflow-y: scroll;
+  }
+
+  .item-title {
+    font-size: 16px;
   }
 
   .item-image {

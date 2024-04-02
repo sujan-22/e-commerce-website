@@ -10,6 +10,7 @@
   background-color: #01111a8d;
   backdrop-filter: blur(30px);
   -webkit-backdrop-filter: blur(10px);
+  align-items: center;
 }
 
 .nav-logo {
@@ -239,15 +240,19 @@ Link {
     opacity: 1;
   }
 
+  .nav-login-cart {
+    margin-left: auto;
+  }
+
+  .nav-logo {
+    position: absolute;
+  }
+
   .drop-down.open {
     transform: rotate(90deg);
   }
 
   .nav-login-cart button {
-    display: none;
-  }
-
-  .nav-login-cart {
     display: none;
   }
 

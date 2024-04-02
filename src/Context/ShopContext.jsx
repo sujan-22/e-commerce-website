@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
+import axios from "axios";
 
 export const ShopContext = createContext(null);
 
@@ -10,7 +11,6 @@ const ShopContextProvider = (props) => {
     fetchProducts();
   }, []);
 
-  // Fetch products from new API endpoint
   const fetchProducts = async () => {
     try {
       const response = await fetch("https://api.escuelajs.co/api/v1/products");

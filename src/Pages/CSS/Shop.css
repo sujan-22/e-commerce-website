@@ -1,8 +1,6 @@
-/* Shop.css */
-
-.shop-carousel {
-  margin: 0 auto;
-  max-width: 1300px;
+.shop-carousel-container {
+  max-width: 1300px; /* Limit the width of the slider */
+  margin: 0 auto; /* Horizontally center the slider within the container */
 }
 
 .shop-image-container {
@@ -48,4 +46,17 @@
   background: transparent;
   border: none;
   cursor: pointer;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 800px) {
+  .shop-carousel-container {
+    max-width: 80%; /* Reduce the width of the slider for smaller screens */
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .shop-carousel-container {
+    max-width: 100%; /* Ensure the slider takes full width on even smaller screens */
+  }
 }
