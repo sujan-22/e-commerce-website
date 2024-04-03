@@ -9,6 +9,8 @@ const LoginSignUp = () => {
     password: "",
     confirmPassword: "",
   });
+
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
   const [showContainer, setShowContainer] = useState(true);
   const [isLogin, setIsLogin] = useState(true);
 
@@ -19,9 +21,7 @@ const LoginSignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setShowContainer(false);
-    let url = isLogin
-      ? "http://localhost:4000/login"
-      : "http://localhost:4000/signup";
+    let url = isLogin ? `${backendUrl}/login` : `${backendUrl}/signup`;
     try {
       const response = await fetch(url, {
         method: "POST",

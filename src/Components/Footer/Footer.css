@@ -8,47 +8,6 @@
   background-color: #02050f;
 }
 
-.footer-logo {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.footer-logo svg {
-  font-size: 40px;
-  color: #f9eded;
-}
-
-.footer-logo p {
-  color: #f9eded;
-  font-size: 46px;
-  font-weight: 700;
-}
-
-.footer-links {
-  display: flex;
-  list-style: none;
-  gap: 50px;
-  color: #f9eded;
-  font-size: 20px;
-}
-
-.footer-links li {
-  cursor: pointer;
-}
-
-.footer-social-icon {
-  display: flex;
-  gap: 20px;
-  color: #f9eded;
-}
-
-.footer-icons-container {
-  padding: 10px;
-  padding-bottom: 6px;
-  cursor: pointer;
-}
-
 .footer-copyright {
   display: flex;
   flex-direction: column;
@@ -72,38 +31,4 @@
 
 .footer-icons-container svg {
   font-size: 30px;
-}
-
-@media (max-width: 800px) {
-  .footer {
-    gap: 20px;
-  }
-
-  .footer-logo {
-    gap: 10px;
-    align-items: end;
-  }
-
-  .footer-logo svg {
-    font-size: 25px;
-    margin-bottom: 8px;
-  }
-
-  .footer-logo p {
-    font-size: 25px;
-  }
-
-  .footer-links {
-    font-size: 14px;
-    gap: 10px;
-    padding-left: 0px;
-  }
-
-  .footer-social-icon svg {
-    width: 22px;
-  }
-
-  .footer-copyright {
-    font-size: 16px;
-  }
 }

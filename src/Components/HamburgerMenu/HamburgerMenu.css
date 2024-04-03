@@ -139,7 +139,7 @@
 
 .nav_login_cart button {
   cursor: pointer;
-  width: 92px;
+  width: auto;
   border: unset;
   border-radius: 50px;
   color: #fa0000;
