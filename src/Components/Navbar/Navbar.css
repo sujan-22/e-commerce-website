@@ -41,7 +41,7 @@
   list-style: none;
   gap: 50px;
   color: #ff0000;
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 500;
 }
 
@@ -89,7 +89,7 @@ ul li:hover {
   background: transparent;
   position: relative;
   font-weight: 700;
-  font-size: 17px;
+  font-size: 16px;
   -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
   box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
   transition: all 250ms;
@@ -149,8 +149,6 @@ Link {
 }
 
 .nav-menu li.active {
-  color: red;
-  border-bottom: 1px solid #ffffff;
 }
 
 @media (max-width: 1280px) {
@@ -198,13 +196,13 @@ Link {
 
   .nav-menu {
     gap: 25px;
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .nav-login-cart button {
     width: 80px;
     height: 35px;
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .nav-login-cart svg {

@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import "./CSS/ShopCategory.css";
 import { ShopContext } from "../Context/ShopContext";
 import Item from "../Components/Items/Item";
@@ -84,7 +85,7 @@ const ShopCategory = (props) => {
       </div>
       <div className="shopcategory-products">
         {currentProducts.map((product, i) => (
-          <Item key={product.id} product={product} addToCart={addToCart} />
+          <Item product={product} addToCart={addToCart} />
         ))}
       </div>
       <div className="pagination">

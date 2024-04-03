@@ -3,7 +3,7 @@
 }
 
 .hamburger-menu {
-  font-size: 17px;
+  font-size: 16px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -121,7 +121,7 @@
   .hamburger-menu li ul li {
     padding: 5px 0;
     color: antiquewhite;
-    font-size: 14px; /* Example font size */
+    font-size: 15px; /* Example font size */
   }
 
   .hamburger-menu li ul li a {

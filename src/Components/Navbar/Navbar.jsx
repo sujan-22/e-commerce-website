@@ -2,7 +2,7 @@ import React from "react";
 import "./Navbar.css";
 import { PiShoppingCartSimpleBold } from "react-icons/pi";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
-import { FaShopify } from "react-icons/fa";
+import { GiOwl } from "react-icons/gi";
 import { useContext, useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Badge from "react-bootstrap/Badge";
@@ -34,13 +34,6 @@ const Navbar = () => {
 
   return (
     <div className="navbar">
-      <div className="nav-logo">
-        <Link to="/">
-          <FaShopify className="svg" />
-        </Link>
-        <p>SUBLIME</p>
-      </div>
-
       <IoIosArrowDropdownCircle
         className={`drop-down ${menuOpen ? "open" : ""}`}
         onClick={toggleMenu}
@@ -56,6 +49,12 @@ const Navbar = () => {
           />
         ))}
       </ul>
+      <div className="nav-logo">
+        <Link to="/">
+          <GiOwl className="svg" />
+        </Link>
+        <p>NIGHT OWL</p>
+      </div>
       <div className="nav-login-cart">
         {localStorage.getItem("auth_token") ? (
           <button
@@ -85,15 +84,32 @@ const Navbar = () => {
   );
 };
 
-const NavItem = ({ to, label, currentPath, setMenuOpen }) => (
-  <li
-    onClick={() => setMenuOpen(false)}
-    className={currentPath === to ? "active" : ""}
-  >
-    <Link to={to} style={{ textDecoration: "none", color: "#626262" }}>
-      {label}
-    </Link>
-  </li>
-);
+const NavItem = ({ to, label, currentPath, setMenuOpen }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
+  return (
+    <li
+      onClick={() => setMenuOpen(false)}
+      className={currentPath === to ? "active" : ""}
+    >
+      <Link
+        to={to}
+        style={{ textDecoration: "none", color: "#626262" }}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        {currentPath === to || isHovered ? <span>{`{${label}}`}</span> : label}
+      </Link>
+    </li>
+  );
+};
 
 export default Navbar;

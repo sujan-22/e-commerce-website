@@ -111,13 +111,30 @@ const HamburgerMenu = () => {
   );
 };
 
-const NavItem = ({ to, label, currentPath, onClick, icon }) => (
-  <li className={currentPath === to ? "active" : ""} onClick={onClick}>
-    <Link to={to} style={{ textDecoration: "none", color: "white" }}>
-      {icon && React.createElement(icon, { className: "nav-icon" })}
-      {label}
-    </Link>
-  </li>
-);
+const NavItem = ({ to, label, currentPath, onClick, icon }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
+  return (
+    <li className={currentPath === to ? "active" : ""} onClick={onClick}>
+      <Link
+        to={to}
+        style={{ textDecoration: "none", color: "white" }}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        {icon && React.createElement(icon, { className: "nav-icon" })}
+        {currentPath === to || isHovered ? <span>{`{${label}}`}</span> : label}
+      </Link>
+    </li>
+  );
+};
 
 export default HamburgerMenu;

@@ -1,30 +1,27 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./ProductDisplay.css";
-import { MdOutlineStar } from "react-icons/md";
-import { MdOutlineStarBorder } from "react-icons/md";
-import { MdOutlineStarHalf } from "react-icons/md";
+import {
+  MdOutlineStar,
+  MdOutlineStarBorder,
+  MdOutlineStarHalf,
+} from "react-icons/md";
 import { ShopContext } from "../../Context/ShopContext";
 
-const ProductDisplay = (props) => {
-  const { product } = props;
+const ProductDisplay = ({ product }) => {
   const { addToCart } = useContext(ShopContext);
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <div className="productdisplay">
-      <div className="productdisplay-left">
-        <div className="productdisplay-img-list">
-          <img src={product.image} alt="" />
-          <img src={product.image} alt="" />
-          <img src={product.image} alt="" />
-          <img src={product.image} alt="" />
-        </div>
-        <div className="productdisplay-img">
-          <img className="productdisplay-main-img" src={product.image} alt="" />
-        </div>
+      <div className="productdisplay-images">
+        {product.images.map((image, index) => (
+          <img key={index} src={image} alt="" />
+        ))}
+        <img src={product.category.image} alt="" />
       </div>
-      <div className="productdisplay-right">
-        <h1>{product.name}</h1>
-        <div className="productdisplay-right-stars">
+      <div className="productdisplay-details">
+        <h1>{product.title}</h1>
+        <div className="productdisplay-stars">
           <MdOutlineStar />
           <MdOutlineStar />
           <MdOutlineStar />
@@ -32,23 +29,18 @@ const ProductDisplay = (props) => {
           <MdOutlineStarBorder />
           <p>(122)</p>
         </div>
-        <div className="productdisplay-right-prices">
-          <div className="productdisplay-right-price-old">
-            ${product.old_price}
-          </div>
-          <div className="productdisplay-right-price-new">
-            ${product.new_price}
-          </div>
+        <div className="productdisplay-prices">
+          <div className="productdisplay-price-old">${product.price}</div>
         </div>
-        <div className="productdisplay-right-description">
+        <div className="productdisplay-description">
           Discover unmatched comfort and style with our premium black hoodie.
           Crafted from high-quality, breathable fabric, this hoodie is perfect
           for your everyday casual look. Elevate your wardrobe with this
           essential piece that seamlessly blends fashion and comfort.
         </div>
-        <div className="productdisplay-right-size">
-          <h1>Select Size</h1>
-          <div className="productdisplay-right-sizes">
+        <div className="productdisplay-size">
+          <h2>Select Size</h2>
+          <div className="productdisplay-sizes">
             <div>S</div>
             <div>M</div>
             <div>L</div>
@@ -57,16 +49,18 @@ const ProductDisplay = (props) => {
           </div>
         </div>
         <button
-          onClick={() => {
-            addToCart(product.id);
-          }}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          onClick={() => addToCart(product.id)}
+          className="add-to-cart"
         >
-          ADD TO CART
+          {isHovered ? "{ ADD TO CART }" : "ADD TO CART"}
         </button>
-        <p className="product-display-right-category">
-          <span>Category: </span>Women, T-Shirt, Crop Top
+        <p className="productdisplay-category">
+          <span>Category: </span>
+          {product.category.name}
         </p>
-        <p className="product-display-right-category">
+        <p className="productdisplay-tags">
           <span>Tags: </span>Modern, Latest
         </p>
       </div>

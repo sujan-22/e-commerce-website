@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -40,12 +41,18 @@ const Item = ({ product, addToCart }) => {
             style={{ width: "100%", height: "auto" }}
             className="div-image"
           >
-            <img
-              src={image}
-              alt=""
-              className="item-image"
-              style={{ width: "100%", height: "auto" }}
-            />
+            <Link
+              to={`/product/${product.id}`}
+              key={product.id}
+              className="product-link"
+            >
+              <img
+                src={image}
+                alt=""
+                className="item-image"
+                style={{ width: "100%", height: "auto" }}
+              />
+            </Link>
           </div>
         ))}
       </Slider>
