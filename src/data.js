@@ -1,18 +1,18 @@
-import { GiClothes, GiConverseShoe } from "react-icons/gi";
-import { RiComputerFill } from "react-icons/ri";
-import { FaCouch, FaHome, FaStore } from "react-icons/fa";
-import { FaBasketShopping } from "react-icons/fa6";
+import { MdLightbulb } from "react-icons/md";
+import { FaMobile, FaHome, FaStore, FaCouch } from "react-icons/fa";
+import { GiWoodFrame } from "react-icons/gi";
+import { BsLaptopFill } from "react-icons/bs";
 
 const navData = [
   {
-    to: "/store/clothing",
-    label: "Clothing",
-    icon: GiClothes,
+    to: "/store/smartphones",
+    label: "Smartphones",
+    icon: FaMobile,
   },
   {
-    to: "/store/electronics",
-    label: "Electronics",
-    icon: RiComputerFill,
+    to: "/store/home-decoration",
+    label: "Home Decoration",
+    icon: GiWoodFrame,
   },
   {
     to: "/store/furniture",
@@ -20,14 +20,14 @@ const navData = [
     icon: FaCouch,
   },
   {
-    to: "/store/shoes",
-    label: "Shoes",
-    icon: GiConverseShoe,
+    to: "/store/laptops",
+    label: "Laptops",
+    icon: BsLaptopFill,
   },
   {
-    to: "/store/all",
-    label: "Shop all",
-    icon: FaBasketShopping,
+    to: "/store/lighting",
+    label: "Lightning",
+    icon: MdLightbulb,
   },
 ];
 

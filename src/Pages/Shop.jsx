@@ -1,6 +1,5 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useContext } from "react";
 import Slider from "react-slick";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -8,23 +7,11 @@ import "../Pages/CSS/Shop.css";
 import { ShopContext } from "../Context/ShopContext";
 
 const Shop = () => {
-  const [products, setProducts] = useState([]);
-  const { addToCart } = useContext(ShopContext);
+  const { all_products } = useContext(ShopContext);
 
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-
-  const fetchProducts = async () => {
-    try {
-      const response = await axios.get(
-        "https://api.escuelajs.co/api/v1/products"
-      );
-      setProducts(response.data);
-    } catch (error) {
-      console.error("Error fetching products:", error);
-    }
-  };
+  if (!all_products) {
+    return <div>Loading...</div>;
+  }
 
   // Custom left arrow component
   const CustomPrevArrow = (props) => {
@@ -84,16 +71,16 @@ const Shop = () => {
 
   const getCategoryPath = (categoryName) => {
     switch (categoryName) {
-      case "un nuevo nombre":
-        return "/store/clothing";
-      case "Electronics":
-        return "/store/electronics";
-      case "Furniture":
+      case "smartphones":
+        return "/store/smartphones";
+      case "home-decoration":
+        return "/store/home-decoration";
+      case "furniture":
         return "/store/furniture";
-      case "Shoes":
-        return "/store/shoes";
-      case "miscellaneous":
-        return "/store/all";
+      case "laptops":
+        return "/store/laptops";
+      case "lighting":
+        return "/store/lighting";
       default:
         return "/";
     }
@@ -106,16 +93,20 @@ const Shop = () => {
         {/* Container div */}
         <div className="shop-carousel">
           <Slider {...settings}>
-            {products.map((product) => (
+            {all_products.map((product) => (
               <div key={product.id}>
                 <div className="shop-image-container">
-                  <img src={product.images[0]} alt={`Product ${product.id}`} />
-                  <span className="category-text">CATEGORY:</span>
-                  <span className="category">{product.category.name}</span>
                   <Link
-                    to={getCategoryPath(product.category.name)}
+                    to={getCategoryPath(product.category)}
                     className="category-link"
                   >
+                    <img
+                      src={product.thumbnail}
+                      alt={`Product ${product.id}`}
+                    />
+                    <span className="category-text">CATEGORY:</span>
+                    <span className="category">{product.category}</span>
+
                     <button className="goto">EXPLORE MORE</button>
                   </Link>
                 </div>

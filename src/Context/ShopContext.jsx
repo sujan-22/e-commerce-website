@@ -17,9 +17,9 @@ const ShopContextProvider = (props) => {
   const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
   useEffect(() => {
-    fetch("https://api.escuelajs.co/api/v1/products")
+    fetch("https://dummyjson.com/products?limit=200")
       .then((response) => response.json())
-      .then((data) => setAll_Products(data));
+      .then((data) => setAll_Products(data.products));
 
     if (localStorage.getItem("auth_token")) {
       fetch(`${backendUrl}/getcart`, {
@@ -35,6 +35,8 @@ const ShopContextProvider = (props) => {
         .then((data) => setCartItems(data));
     }
   }, []);
+
+  console.log(all_products);
 
   const addToCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));

@@ -11,8 +11,9 @@
 
 .shop-image-container img {
   width: 100%;
-  height: auto;
+  height: 100%;
   border-radius: 10px; /* Add border radius */
+  object-fit: fill; /* Make sure the image fills the container */
 }
 
 .category-text {

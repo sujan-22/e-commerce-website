@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
 import "./CSS/ShopCategory.css";
 import { ShopContext } from "../Context/ShopContext";
 import Item from "../Components/Items/Item";
@@ -18,9 +17,14 @@ const ShopCategory = (props) => {
     setSortOption(e.value);
   };
 
+  if (!all_products) {
+    return <div>Loading...</div>;
+  }
+
+  console.log(all_products);
+
   const filteredProducts = all_products.filter(
-    (item) =>
-      item.category.name === props.category && item.description.length > 5
+    (item) => item.category === props.category
   );
 
   const sortedProducts = filteredProducts;

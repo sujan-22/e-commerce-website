@@ -14,7 +14,7 @@ const Item = ({ product, addToCart }) => {
     customPaging: function (i) {
       return (
         <div>
-          <img src={product.images[i]} alt={product.name} />
+          <img src={product.images[i]} alt="" />
         </div>
       );
     },
@@ -58,7 +58,7 @@ const Item = ({ product, addToCart }) => {
       </Slider>
       <div className="item-info">
         <p className="item-title">{product.title}</p>
-        <p className="item-category">Category: {product.category.name}</p>
+        <p className="item-category">Category: {product.category}</p>
         <div className="item-prices">
           <div className="item-price-new">${product.price}</div>
         </div>

@@ -17,7 +17,6 @@ const ProductDisplay = ({ product }) => {
         {product.images.map((image, index) => (
           <img key={index} src={image} alt="" />
         ))}
-        <img src={product.category.image} alt="" />
       </div>
       <div className="productdisplay-details">
         <h1>{product.title}</h1>
