@@ -22,6 +22,7 @@ const LoginSignUp = () => {
     e.preventDefault();
     setShowContainer(false);
     let url = isLogin ? `${backendUrl}/login` : `${backendUrl}/signup`;
+    console.log(url);
     try {
       const response = await fetch(url, {
         method: "POST",
