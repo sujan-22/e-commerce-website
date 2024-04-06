@@ -100,8 +100,12 @@
 
 @media screen and (max-width: 800px) {
   .productdisplay-images {
-    grid-template-columns: 1fr; /* Single column for images on smaller screens */
-    grid-template-rows: auto; /* Auto height for images on smaller screens */
+    /* grid-template-columns: 1fr;
+    grid-template-rows: auto;  */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }
 

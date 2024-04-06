@@ -21,8 +21,6 @@ const ShopCategory = (props) => {
     return <div>Loading...</div>;
   }
 
-  console.log(all_products);
-
   const filteredProducts = all_products.filter(
     (item) => item.category === props.category
   );
@@ -89,7 +87,7 @@ const ShopCategory = (props) => {
       </div>
       <div className="shopcategory-products">
         {currentProducts.map((product, i) => (
-          <Item product={product} addToCart={addToCart} />
+          <Item product={product} addToCart={addToCart} key={i} />
         ))}
       </div>
       <div className="pagination">

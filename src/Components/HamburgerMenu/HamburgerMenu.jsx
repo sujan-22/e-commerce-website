@@ -1,21 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { navData, specialItems } from "../../data";
-import { RiLogoutBoxLine, RiLoginBoxLine } from "react-icons/ri";
+import { RiLoginBoxLine } from "react-icons/ri";
+import { ShopContext } from "../../Context/ShopContext";
 import "./HamburgerMenu.css";
 
-var hideMenu = () => {
-  var bar = document.getElementsByClassName("ham");
-  var ham = document.getElementsByClassName("hamburger-menu");
-  bar[0].classList.remove("first");
-  bar[1].classList.remove("second");
-  bar[2].classList.remove("Third");
-  ham[0].classList.remove("showMenu");
-};
-
 const HamburgerMenu = () => {
+  const { avatarUrl } = useContext(ShopContext);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const location = useLocation();
+  const menuRef = useRef(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -29,6 +23,20 @@ const HamburgerMenu = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        hideMenu();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   var showMenu = () => {
     var bar = document.getElementsByClassName("ham");
     var ham = document.getElementsByClassName("hamburger-menu");
@@ -38,8 +46,17 @@ const HamburgerMenu = () => {
     ham[0].classList.toggle("showMenu");
   };
 
+  var hideMenu = () => {
+    var bar = document.getElementsByClassName("ham");
+    var ham = document.getElementsByClassName("hamburger-menu");
+    bar[0].classList.remove("first");
+    bar[1].classList.remove("second");
+    bar[2].classList.remove("Third");
+    ham[0].classList.remove("showMenu");
+  };
+
   return (
-    <div className="hamburger">
+    <div className="hamburger" ref={menuRef}>
       <div className="Hamburger" onClick={showMenu}>
         <span className="ham"></span>
         <span className="ham"></span>
@@ -86,15 +103,17 @@ const HamburgerMenu = () => {
             </li>
             <div className="nav_login_cart">
               {localStorage.getItem("auth_token") ? (
-                <button
-                  onClick={() => {
-                    localStorage.removeItem("auth_token");
-                    window.location.replace("/");
-                  }}
-                >
-                  <RiLogoutBoxLine className="icon" />
-                  Logout
-                </button>
+                <>
+                  <button
+                    onClick={() => {
+                      localStorage.removeItem("auth_token");
+                      window.location.replace("/");
+                    }}
+                  >
+                    Logout
+                  </button>
+                  <img src={avatarUrl} alt="Avatar" className="user_avatar" />
+                </>
               ) : (
                 <Link to="/login">
                   <button>

@@ -12,13 +12,9 @@ import { specialItems } from "../../data";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { getTotalCartItems } = useContext(ShopContext);
+  const { getTotalCartItems, avatarUrl } = useContext(ShopContext);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const location = useLocation();
-
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -34,10 +30,6 @@ const Navbar = () => {
 
   return (
     <div className="navbar">
-      <IoIosArrowDropdownCircle
-        className={`drop-down ${menuOpen ? "open" : ""}`}
-        onClick={toggleMenu}
-      />
       <ul className={`nav-menu ${menuOpen ? "visible" : ""}`}>
         {specialItems.map((item, index) => (
           <NavItem
@@ -57,14 +49,19 @@ const Navbar = () => {
       </div>
       <div className="nav-login-cart">
         {localStorage.getItem("auth_token") ? (
-          <button
-            onClick={() => {
-              localStorage.removeItem("auth_token");
-              window.location.replace("/");
-            }}
-          >
-            Logout
-          </button>
+          <>
+            {windowWidth > 800 && (
+              <img src={avatarUrl} alt="Avatar" className="avatar" />
+            )}
+            <button
+              onClick={() => {
+                localStorage.removeItem("auth_token");
+                window.location.replace("/");
+              }}
+            >
+              Logout
+            </button>
+          </>
         ) : (
           <Link to="/login">
             <button>Login</button>

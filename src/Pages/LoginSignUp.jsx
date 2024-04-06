@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 const LoginSignUp = () => {
@@ -8,14 +7,20 @@ const LoginSignUp = () => {
     email: "",
     password: "",
     confirmPassword: "",
+    avatarUrl: "", // Add avatarUrl to the formData state
   });
-
-  const backendUrl = process.env.REACT_APP_BACKEND_URL;
   const [showContainer, setShowContainer] = useState(true);
   const [isLogin, setIsLogin] = useState(true);
+  const [avatarUrls, setAvatarUrls] = useState([]);
+
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
   const changeHandler = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleAvatarSelect = (avatarUrl) => {
+    setFormData({ ...formData, avatarUrl }); // Update formData with the selected avatar URL
   };
 
   const handleSubmit = async (e) => {
@@ -45,6 +50,18 @@ const LoginSignUp = () => {
     }
   };
 
+  const fetchRandomAvatars = () => {
+    const avatarUrls = Array.from({ length: 3 }, () => {
+      const randomNumber = Math.floor(Math.random() * 999999999999) + 1;
+      return `https://api.multiavatar.com/${randomNumber}.png?apikey=${process.env.REACT_APP_MULTIAVATAR_API_KEY}`;
+    });
+    setAvatarUrls(avatarUrls);
+  };
+
+  useEffect(() => {
+    fetchRandomAvatars();
+  }, []);
+
   const toggleForm = () => {
     setIsLogin(!isLogin);
     setFormData({
@@ -52,6 +69,7 @@ const LoginSignUp = () => {
       email: "",
       password: "",
       confirmPassword: "",
+      avatarUrl: "", // Reset avatarUrl when toggling form
     });
   };
 
@@ -94,9 +112,31 @@ const LoginSignUp = () => {
               placeholder="Confirm Password"
             />
           )}
-          <button type="submit" disabled={!showContainer}>
+
+          {/* Avatar selection */}
+          {!isLogin && formData.avatarUrl === "" && (
+            <AvatarSelection>
+              <h2>Select Your Avatar</h2>
+              <AvatarContainer>
+                {/* Render three random avatars */}
+                {avatarUrls.map((url, index) => (
+                  <Avatar
+                    key={index}
+                    src={url}
+                    onClick={() => handleAvatarSelect(url)}
+                  />
+                ))}
+              </AvatarContainer>
+            </AvatarSelection>
+          )}
+
+          <button
+            type="submit"
+            disabled={!showContainer || (formData.avatarUrl === "" && !isLogin)}
+          >
             {isLogin ? "Login" : "Sign Up"}
           </button>
+
           <span>
             {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
             <ToggleLink onClick={toggleForm}>
@@ -108,6 +148,23 @@ const LoginSignUp = () => {
     </div>
   );
 };
+
+const AvatarSelection = styled.div`
+  margin-bottom: 1rem;
+`;
+
+const AvatarContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+`;
+
+const Avatar = styled.img`
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  cursor: pointer;
+`;
 
 const FormContainer = styled.div`
   height: 100vh;

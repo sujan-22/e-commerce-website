@@ -148,7 +148,10 @@ Link {
   display: none;
 }
 
-.nav-menu li.active {
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
 
 @media (max-width: 1280px) {

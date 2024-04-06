@@ -80,6 +80,13 @@
   margin-right: 5px;
 }
 
+.user_avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
 @media (max-width: 1024px) {
   .hamburger-menu {
     inset: 0 0 0 60%;
@@ -95,7 +102,7 @@
     inset: 0 80% 0 0;
     height: 100vh;
     transform: translateX(-100%);
-    width: 50%;
+    width: max-content;
     padding-left: 0;
     display: flex;
     justify-content: center;

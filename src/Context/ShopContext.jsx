@@ -13,6 +13,7 @@ const getDefaultCart = () => {
 const ShopContextProvider = (props) => {
   const [all_products, setAll_Products] = useState([]);
   const [cartItems, setCartItems] = useState(getDefaultCart());
+  const [avatarUrl, setAvatarUrl] = useState("");
 
   const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
@@ -22,21 +23,25 @@ const ShopContextProvider = (props) => {
       .then((data) => setAll_Products(data.products));
 
     if (localStorage.getItem("auth_token")) {
-      fetch(`${backendUrl}/getcart`, {
-        method: "POST",
+      // Fetch user data including avatarUrl from the userdata endpoint
+      fetch(`${backendUrl}/userdata`, {
+        method: "GET",
         headers: {
-          Accept: "application/form-data",
-          auth_token: `${localStorage.getItem("auth_token")}`,
+          Accept: "application/json",
+          auth_token: localStorage.getItem("auth_token"),
           "Content-Type": "application/json",
         },
-        body: "",
       })
         .then((response) => response.json())
-        .then((data) => setCartItems(data));
+        .then((userData) => {
+          setCartItems(userData.cartData);
+          setAvatarUrl(userData.avatarUrl); // Set the avatar URL from user data
+        })
+        .catch((error) => console.error("Error fetching user data:", error));
     }
   }, []);
 
-  console.log(all_products);
+  console.log(avatarUrl);
 
   const addToCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
@@ -104,6 +109,7 @@ const ShopContextProvider = (props) => {
     cartItems,
     addToCart,
     removeFromCart,
+    avatarUrl,
   };
 
   return (
