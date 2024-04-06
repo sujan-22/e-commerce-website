@@ -32,3 +32,9 @@
 .footer-icons-container svg {
   font-size: 30px;
 }
+
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
