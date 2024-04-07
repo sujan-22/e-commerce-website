@@ -38,3 +38,11 @@
   align-items: center;
   gap: 10px;
 }
+
+@media (max-width: 800px) {
+  p {
+    width: 80%;
+    text-align: center;
+    font-size: 90%;
+  }
+}
