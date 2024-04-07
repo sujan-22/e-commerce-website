@@ -40,7 +40,7 @@
 }
 
 @media (max-width: 800px) {
-  p {
+  .footer-copyright p {
     width: 80%;
     text-align: center;
     font-size: 90%;
