@@ -75,7 +75,7 @@ const ShopCategory = (props) => {
           </span>{" "}
         </p>
 
-        <div className="custom-dropdown">
+        {/* <div className="custom-dropdown">
           <Dropdown
             value={sortOption}
             options={cities}
@@ -83,7 +83,7 @@ const ShopCategory = (props) => {
             optionLabel="label"
             placeholder="Filter"
           />
-        </div>
+        </div> */}
       </div>
       <div className="shopcategory-products">
         {currentProducts.map((product, i) => (

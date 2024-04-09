@@ -6,6 +6,8 @@ import {
   MdOutlineStarHalf,
 } from "react-icons/md";
 import { ShopContext } from "../../Context/ShopContext";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const ProductDisplay = ({ product }) => {
   const { addToCart } = useContext(ShopContext);
@@ -14,12 +16,24 @@ const ProductDisplay = ({ product }) => {
   return (
     <div className="productdisplay">
       <div className="productdisplay-images">
-        {product.images.map((image, index) => (
-          <img key={index} src={image} alt="" />
-        ))}
+        <Carousel
+          showArrows={true}
+          showThumbs={false}
+          transitionTime={500} // Adjust transition time (in milliseconds)
+          interval={4000} // Adjust interval between slides (in milliseconds)
+          infiniteLoop={true} // Enable infinite loop
+          emulateTouch={true} // Enable touch swipe emulation for desktop
+          swipeable={true} // Enable swipe gestures
+        >
+          {product.images.map((image, index) => (
+            <div key={index}>
+              <img src={image} alt="" />
+            </div>
+          ))}
+        </Carousel>
       </div>
       <div className="productdisplay-details">
-        <h1>{product.title}</h1>
+        <h1>{product.name}</h1>
         <div className="productdisplay-stars">
           <MdOutlineStar />
           <MdOutlineStar />
@@ -31,22 +45,8 @@ const ProductDisplay = ({ product }) => {
         <div className="productdisplay-prices">
           <div className="productdisplay-price-old">${product.price}</div>
         </div>
-        <div className="productdisplay-description">
-          Discover unmatched comfort and style with our premium black hoodie.
-          Crafted from high-quality, breathable fabric, this hoodie is perfect
-          for your everyday casual look. Elevate your wardrobe with this
-          essential piece that seamlessly blends fashion and comfort.
-        </div>
-        <div className="productdisplay-size">
-          <h2>Select Size</h2>
-          <div className="productdisplay-sizes">
-            <div>S</div>
-            <div>M</div>
-            <div>L</div>
-            <div>XL</div>
-            <div>XXL</div>
-          </div>
-        </div>
+        <div className="productdisplay-description">{product.description}</div>
+
         <button
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}

@@ -8,6 +8,7 @@ import LoginSignUp from "./Pages/LoginSignUp";
 import ShopCategory from "./Pages/ShopCategory";
 import Product from "./Pages/Product";
 import Footer from "./Components/Footer/Footer";
+import AddFurnitureProducts from "./node";
 
 function App() {
   return (
@@ -17,10 +18,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Shop />} />
           <Route path="/store" element={<Store />}>
-            <Route index element={<ShopCategory category="smartphones" />} />
+            <Route index element={<ShopCategory category="electronics" />} />
             <Route
               path="/store/smartphones"
-              element={<ShopCategory category="smartphones" />}
+              element={<ShopCategory category="electronics" />}
             />
             <Route
               path="/store/home-decoration"

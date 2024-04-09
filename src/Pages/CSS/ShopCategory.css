@@ -1,6 +1,6 @@
 .shopcategory-indexSort {
   display: flex;
-  margin: 0px 150px;
+  margin: 10px 150px;
   justify-content: space-between;
   align-items: center;
   color: white;
@@ -80,14 +80,9 @@
 }
 
 @media (max-width: 1280px) {
-  .shopcategory-banner {
-    margin: 20px auto;
-    width: 90%;
-  }
-
   .shopcategory-indexSort {
     width: 90%;
-    margin: auto;
+    margin: 10px auto;
   }
 
   .shopcategory-sort {
@@ -118,10 +113,6 @@
 }
 
 @media (max-width: 800px) {
-  .shopcategory-banner {
-    width: 95%;
-  }
-
   .shopcategory-products {
     width: 95%;
     margin: 10px auto;

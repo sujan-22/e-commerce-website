@@ -1,7 +1,6 @@
 import React from "react";
 import "./Navbar.css";
 import { PiShoppingCartSimpleBold } from "react-icons/pi";
-import { IoIosArrowDropdownCircle } from "react-icons/io";
 import { GiOwl } from "react-icons/gi";
 import { useContext, useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
@@ -12,7 +11,7 @@ import { specialItems } from "../../data";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { getTotalCartItems, avatarUrl } = useContext(ShopContext);
+  const { getTotalCartItems, userData } = useContext(ShopContext);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const location = useLocation();
 
@@ -51,7 +50,7 @@ const Navbar = () => {
         {localStorage.getItem("auth_token") ? (
           <>
             {windowWidth > 800 && (
-              <img src={avatarUrl} alt="Avatar" className="avatar" />
+              <img src={userData.avatarUrl} alt="Avatar" className="avatar" />
             )}
             <button
               onClick={() => {

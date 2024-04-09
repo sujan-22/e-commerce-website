@@ -71,7 +71,7 @@ const Shop = () => {
 
   const getCategoryPath = (categoryName) => {
     switch (categoryName) {
-      case "smartphones":
+      case "electronics":
         return "/store/smartphones";
       case "home-decoration":
         return "/store/home-decoration";
@@ -101,7 +101,7 @@ const Shop = () => {
                     className="category-link"
                   >
                     <img
-                      src={product.thumbnail}
+                      src={product.images[0]}
                       alt={`Product ${product.id}`}
                     />
                     <span className="category-text">CATEGORY:</span>

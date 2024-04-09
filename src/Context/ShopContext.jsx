@@ -13,14 +13,12 @@ const getDefaultCart = () => {
 const ShopContextProvider = (props) => {
   const [all_products, setAll_Products] = useState([]);
   const [cartItems, setCartItems] = useState(getDefaultCart());
-  const [avatarUrl, setAvatarUrl] = useState("");
+  const [userData, setUserData] = useState([]);
 
   const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
   useEffect(() => {
-    fetch("https://dummyjson.com/products?limit=200")
-      .then((response) => response.json())
-      .then((data) => setAll_Products(data.products));
+    fetchProducts();
 
     if (localStorage.getItem("auth_token")) {
       // Fetch user data including avatarUrl from the userdata endpoint
@@ -35,13 +33,20 @@ const ShopContextProvider = (props) => {
         .then((response) => response.json())
         .then((userData) => {
           setCartItems(userData.cartData);
-          setAvatarUrl(userData.avatarUrl); // Set the avatar URL from user data
+          setUserData(userData); // Set the avatar URL from user data
         })
         .catch((error) => console.error("Error fetching user data:", error));
     }
   }, []);
 
-  console.log(avatarUrl);
+  const fetchProducts = () => {
+    fetch(`${backendUrl}/allproducts`)
+      .then((response) => response.json())
+      .then((data) => setAll_Products(data))
+      .catch((error) => console.error("Error fetching products:", error));
+  };
+
+  console.log(all_products);
 
   const addToCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
@@ -109,7 +114,7 @@ const ShopContextProvider = (props) => {
     cartItems,
     addToCart,
     removeFromCart,
-    avatarUrl,
+    userData,
   };
 
   return (

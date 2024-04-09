@@ -6,10 +6,15 @@ import { ShopContext } from "../../Context/ShopContext";
 import "./HamburgerMenu.css";
 
 const HamburgerMenu = () => {
-  const { avatarUrl } = useContext(ShopContext);
+  const { userData } = useContext(ShopContext);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const location = useLocation();
   const menuRef = useRef(null);
+  const isLoggedIn = localStorage.getItem("auth_token");
+
+  const buttonPosition = isLoggedIn
+    ? { position: "relative", bottom: "47px", left: "40px" }
+    : {};
 
   useEffect(() => {
     const handleResize = () => {
@@ -101,18 +106,28 @@ const HamburgerMenu = () => {
                 ))}
               </ul>
             </li>
+            {isLoggedIn && (
+              <div className="user-info">
+                <img
+                  src={userData.avatarUrl}
+                  alt="Avatar"
+                  className="user-avatar"
+                />
+                <p className="user-email">{userData.email}</p>{" "}
+              </div>
+            )}
             <div className="nav_login_cart">
-              {localStorage.getItem("auth_token") ? (
+              {isLoggedIn ? (
                 <>
                   <button
                     onClick={() => {
                       localStorage.removeItem("auth_token");
                       window.location.replace("/");
                     }}
+                    style={buttonPosition}
                   >
                     Logout
                   </button>
-                  <img src={avatarUrl} alt="Avatar" className="user_avatar" />
                 </>
               ) : (
                 <Link to="/login">

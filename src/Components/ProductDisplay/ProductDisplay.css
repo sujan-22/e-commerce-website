@@ -5,15 +5,40 @@
   color: white;
   width: 90%;
   margin: auto;
+  margin-top: 10px;
 }
 
-.productdisplay-images {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Two columns for images */
-  grid-template-rows: repeat(2, 1fr); /* Two rows for images */
-  grid-gap: 10px; /* Gap between images */
+.item-image {
+  border-radius: 10px;
+}
+
+.div-image {
+  height: 400px;
+  background-color: #2e32405f;
+}
+ul .slick-dots .slick-thumb {
+  display: flex !important;
+}
+/* Custom styling for slick dots */
+.slick-dots {
+  position: absolute;
+  bottom: 50px; /* Adjust as needed */
   width: 100%;
-  height: 100%;
+  list-style: none;
+  display: flex !important;
+  right: 15px;
+  justify-content: space-evenly;
+}
+
+.slick-dots img {
+  width: 55px; /* Make thumbnail images fill their container */
+  height: auto; /* Maintain aspect ratio */
+  border: 2px solid transparent; /* Add border to make dots visible */
+  border-radius: 5px; /* Optional: Add border radius for rounded dots */
+}
+
+.slick-dots .slick-active img {
+  border-color: #fff; /* Style for active dot */
 }
 
 .productdisplay-images img {

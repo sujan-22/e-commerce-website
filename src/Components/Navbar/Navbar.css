@@ -84,7 +84,7 @@ ul li:hover {
   padding: 10px 25px;
   border: unset;
   border-radius: 50px;
-  color: #fa0000;
+  color: #767676;
   z-index: 1;
   background: transparent;
   position: relative;
@@ -130,9 +130,9 @@ ul li:hover {
   margin-top: -35px;
   margin-left: -50px;
   border-radius: 100%;
-  font-size: 14px;
+  font-size: 16px;
   padding: auto;
-  color: #ff0000;
+  color: #767676;
   font-weight: 700;
 }
 
@@ -243,6 +243,7 @@ Link {
 
   .nav-login-cart {
     margin-left: auto;
+    margin-right: 10px;
   }
 
   .nav-logo {

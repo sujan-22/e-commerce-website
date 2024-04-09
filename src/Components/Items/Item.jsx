@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -6,9 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import "./Item.css";
 
 const Item = ({ product, addToCart }) => {
-  if (!product) {
-    return null;
-  }
+  const [isHovered, setIsHovered] = useState(false);
 
   const settings = {
     customPaging: function (i) {
@@ -33,7 +31,11 @@ const Item = ({ product, addToCart }) => {
   };
 
   return (
-    <div className="item">
+    <div
+      className="item"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <Slider {...settings}>
         {product.images.map((image, index) => (
           <div
@@ -57,14 +59,19 @@ const Item = ({ product, addToCart }) => {
         ))}
       </Slider>
       <div className="item-info">
-        <p className="item-title">{product.title}</p>
-        <p className="item-category">Category: {product.category}</p>
-        <div className="item-prices">
-          <div className="item-price-new">${product.price}</div>
-        </div>
-        <button className="add-to-cart-button" onClick={handleAddToCart}>
-          Add to Cart
-        </button>
+        <p className="item-title">{product.name}</p>
+        {isHovered && (
+          <div className="item-prices">
+            <button className="add-to-cart-button" onClick={handleAddToCart}>
+              Add to Cart
+            </button>
+          </div>
+        )}
+        {!isHovered && (
+          <div className="item-prices">
+            <div className="item-price-new">${product.price}</div>
+          </div>
+        )}
       </div>
     </div>
   );
