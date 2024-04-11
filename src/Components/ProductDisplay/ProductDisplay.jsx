@@ -57,7 +57,7 @@ const ProductDisplay = ({ product }) => {
         </button>
         <p className="productdisplay-category">
           <span>Category: </span>
-          {product.category.name}
+          {product.category}
         </p>
         <p className="productdisplay-tags">
           <span>Tags: </span>Modern, Latest

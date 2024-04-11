@@ -1,12 +1,12 @@
 import { MdLightbulb } from "react-icons/md";
 import { FaMobile, FaHome, FaStore, FaCouch } from "react-icons/fa";
 import { GiWoodFrame } from "react-icons/gi";
-import { BsLaptopFill } from "react-icons/bs";
+import { IoBicycleOutline } from "react-icons/io5";
 
 const navData = [
   {
-    to: "/store/smartphones",
-    label: "Smartphones",
+    to: "/store/electronics",
+    label: "Electronics",
     icon: FaMobile,
   },
   {
@@ -20,9 +20,9 @@ const navData = [
     icon: FaCouch,
   },
   {
-    to: "/store/laptops",
-    label: "Laptops",
-    icon: BsLaptopFill,
+    to: "/store/sports",
+    label: "Sports",
+    icon: IoBicycleOutline,
   },
   {
     to: "/store/lighting",

@@ -14,6 +14,7 @@ const ShopContextProvider = (props) => {
   const [all_products, setAll_Products] = useState([]);
   const [cartItems, setCartItems] = useState(getDefaultCart());
   const [userData, setUserData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
@@ -42,8 +43,14 @@ const ShopContextProvider = (props) => {
   const fetchProducts = () => {
     fetch(`${backendUrl}/allproducts`)
       .then((response) => response.json())
-      .then((data) => setAll_Products(data))
-      .catch((error) => console.error("Error fetching products:", error));
+      .then((data) => {
+        setAll_Products(data);
+        setLoading(false); // Set loading to false when data is fetched
+      })
+      .catch((error) => {
+        console.error("Error fetching products:", error);
+        setLoading(false); // Set loading to false in case of error
+      });
   };
 
   console.log(all_products);
@@ -115,6 +122,7 @@ const ShopContextProvider = (props) => {
     addToCart,
     removeFromCart,
     userData,
+    loading,
   };
 
   return (

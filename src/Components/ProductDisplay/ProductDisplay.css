@@ -16,30 +16,6 @@
   height: 400px;
   background-color: #2e32405f;
 }
-ul .slick-dots .slick-thumb {
-  display: flex !important;
-}
-/* Custom styling for slick dots */
-.slick-dots {
-  position: absolute;
-  bottom: 50px; /* Adjust as needed */
-  width: 100%;
-  list-style: none;
-  display: flex !important;
-  right: 15px;
-  justify-content: space-evenly;
-}
-
-.slick-dots img {
-  width: 55px; /* Make thumbnail images fill their container */
-  height: auto; /* Maintain aspect ratio */
-  border: 2px solid transparent; /* Add border to make dots visible */
-  border-radius: 5px; /* Optional: Add border radius for rounded dots */
-}
-
-.slick-dots .slick-active img {
-  border-color: #fff; /* Style for active dot */
-}
 
 .productdisplay-images img {
   width: 100%;

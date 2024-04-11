@@ -12,10 +12,6 @@ const HamburgerMenu = () => {
   const menuRef = useRef(null);
   const isLoggedIn = localStorage.getItem("auth_token");
 
-  const buttonPosition = isLoggedIn
-    ? { position: "relative", bottom: "47px", left: "40px" }
-    : {};
-
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
@@ -113,7 +109,9 @@ const HamburgerMenu = () => {
                   alt="Avatar"
                   className="user-avatar"
                 />
-                <p className="user-email">{userData.email}</p>{" "}
+                <p className="user-email" style={{ fontWeight: "bold" }}>
+                  {userData.email}
+                </p>{" "}
               </div>
             )}
             <div className="nav_login_cart">
@@ -124,7 +122,6 @@ const HamburgerMenu = () => {
                       localStorage.removeItem("auth_token");
                       window.location.replace("/");
                     }}
-                    style={buttonPosition}
                   >
                     Logout
                   </button>

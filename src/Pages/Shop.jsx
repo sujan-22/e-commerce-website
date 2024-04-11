@@ -13,6 +13,23 @@ const Shop = () => {
     return <div>Loading...</div>;
   }
 
+  const getRandomProductForEachCategory = () => {
+    const uniqueCategories = [
+      ...new Set(all_products.map((product) => product.category)),
+    ];
+    const randomProducts = uniqueCategories.map((category) => {
+      const categoryProducts = all_products.filter(
+        (product) => product.category === category
+      );
+      return categoryProducts[
+        Math.floor(Math.random() * categoryProducts.length)
+      ];
+    });
+    return randomProducts;
+  };
+
+  const randomProducts = getRandomProductForEachCategory();
+
   // Custom left arrow component
   const CustomPrevArrow = (props) => {
     const { className, style, onClick } = props;
@@ -72,13 +89,13 @@ const Shop = () => {
   const getCategoryPath = (categoryName) => {
     switch (categoryName) {
       case "electronics":
-        return "/store/smartphones";
+        return "/store/electronics";
       case "home-decoration":
         return "/store/home-decoration";
       case "furniture":
         return "/store/furniture";
-      case "laptops":
-        return "/store/laptops";
+      case "sports":
+        return "/store/sports";
       case "lighting":
         return "/store/lighting";
       default:
@@ -93,7 +110,7 @@ const Shop = () => {
         {/* Container div */}
         <div className="shop-carousel">
           <Slider {...settings}>
-            {all_products.map((product) => (
+            {randomProducts.map((product) => (
               <div key={product.id}>
                 <div className="shop-image-container">
                   <Link

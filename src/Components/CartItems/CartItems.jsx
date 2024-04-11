@@ -16,7 +16,7 @@ const CartItems = () => {
     <div className="cartitems">
       <div className="cartitems-format-main">
         <p>Products</p>
-        <p>Title</p>
+        <p>Name</p>
         <p>Price</p>
         <p>Quantity</p>
         <p>Total</p>
@@ -32,7 +32,7 @@ const CartItems = () => {
                   alt=""
                   className="carticon-product-icon"
                 />
-                <p>{product.title}</p>
+                <p>{product.name}</p>
                 <p>${product.price}</p>
                 <div className="quantity-controls">
                   <MdRemoveCircleOutline

@@ -35,6 +35,8 @@ const Item = ({ product, addToCart }) => {
       className="item"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onTouchStart={() => setIsHovered(true)}
+      onTouchEnd={() => setIsHovered(false)}
     >
       <Slider {...settings}>
         {product.images.map((image, index) => (
@@ -52,7 +54,7 @@ const Item = ({ product, addToCart }) => {
                 src={image}
                 alt=""
                 className="item-image"
-                style={{ width: "100%", height: "auto" }}
+                style={{ width: "100%", height: "400px", objectFit: "cover" }}
               />
             </Link>
           </div>

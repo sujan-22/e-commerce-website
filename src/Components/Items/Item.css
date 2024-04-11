@@ -62,7 +62,8 @@ ul .slick-dots .slick-thumb {
 
 .slick-dots img {
   width: 55px; /* Make thumbnail images fill their container */
-  height: auto; /* Maintain aspect ratio */
+  height: 60px; /* Maintain aspect ratio */
+  object-fit: cover;
   border: 2px solid transparent; /* Add border to make dots visible */
   border-radius: 5px; /* Optional: Add border radius for rounded dots */
 }
@@ -80,6 +81,7 @@ ul .slick-dots .slick-thumb {
 
   .item-image {
     border-radius: 10px;
+    height: 500px;
   }
 
   .item-description {
@@ -147,6 +149,7 @@ ul .slick-dots .slick-thumb {
 
   .item-image {
     border-radius: 10px;
+    height: 400px;
   }
 
   .div-image {

@@ -4,7 +4,9 @@ function AddFurnitureProducts() {
   const handleAddProducts = async () => {
     try {
       // Fetch products from the external API
-      const response = await fetch("https://api.escuelajs.co/api/v1/products");
+      const response = await fetch(
+        "https://yofakestoreapi.onrender.com/api/products"
+      );
       const products = await response.json();
 
       // Filter products with category 'potato'
