@@ -74,7 +74,9 @@ const Navbar = () => {
         </Badge>
       </div>
       {windowWidth <= 800 && !location.pathname.includes("/store") && (
-        <HamburgerMenu />
+        <div className="hamb">
+          <HamburgerMenu />
+        </div>
       )}
     </div>
   );

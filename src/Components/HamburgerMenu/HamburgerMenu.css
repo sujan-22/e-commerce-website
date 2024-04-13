@@ -6,20 +6,22 @@
   font-size: 16px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   position: fixed;
-  inset: 0 0 0 80%;
-  gap: 30px;
+  inset: 75px 75% 0 0; /* Adjust inset to start after the navbar */
+  gap: 20px;
   background-color: #01111ab5;
   backdrop-filter: blur(30px);
   -webkit-backdrop-filter: blur(10px);
-  height: 100vh;
-  transform: translateX(100%);
+  height: calc(100vh - 75px); /* Adjust height to fill the remaining viewport */
+  transform: translateX(-100%);
   transition: 0.9s;
   z-index: 4;
   list-style: none;
   padding-left: 0;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 10px;
+  min-width: 300px;
 }
 
 .hamburger-menu li.active a {
@@ -35,8 +37,8 @@
   cursor: pointer;
   display: block;
   position: fixed;
-  right: 15px;
-  top: 16px;
+  left: 10px;
+  top: 19px;
   z-index: 6;
 }
 
@@ -99,28 +101,29 @@
   vertical-align: middle;
 }
 
-@media (max-width: 1024px) {
-  .hamburger-menu {
-    inset: 0 0 0 60%;
-  }
-
-  .showMenu {
-    transform: translateX(0);
-  }
-}
-
 @media (max-width: 800px) {
   .hamburger-menu {
-    inset: 0 80% 0 0;
-    height: 100vh;
-    transform: translateX(-100%);
-    width: 100%;
-    padding-left: 0;
+    font-size: 16px;
     display: flex;
-    justify-content: center;
-    align-items: start;
-    padding-left: 20px;
-    padding-top: 100px;
+    flex-direction: column;
+    position: fixed;
+    inset: 75px 75% 0 0; /* Adjust inset to start after the navbar */
+    gap: 20px;
+    background-color: #01111ab5;
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(10px);
+    height: calc(
+      100vh - 75px
+    ); /* Adjust height to fill the remaining viewport */
+    transform: translateX(-100%);
+    transition: 0.9s;
+    z-index: 4;
+    list-style: none;
+    padding-left: 0;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 10px;
+    min-width: 300px;
   }
 
   .showMenu {
