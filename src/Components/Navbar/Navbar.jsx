@@ -98,7 +98,7 @@ const NavItem = ({ to, label, currentPath, setMenuOpen }) => {
     >
       <Link
         to={to}
-        style={{ textDecoration: "none", color: "#626262" }}
+        style={{ textDecoration: "none", color: "gray" }}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >

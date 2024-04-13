@@ -1,6 +1,6 @@
 .item {
   position: relative; /* Add relative positioning */
-  width: 400px;
+  width: 340px;
   border-radius: 10px;
   overflow: hidden !important;
   color: white;
@@ -12,38 +12,35 @@
 }
 
 .div-image {
-  height: 400px;
+  height: 350px;
   background-color: #2e32405f;
 }
 
 .item-info {
   margin-top: 10px;
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto auto; /* Define two rows */
+  grid-template-columns: auto auto;
   width: 100%;
 }
 
 .item-title {
-  font-size: 16px;
   margin-bottom: 5px;
+  grid-row: 1; /* Place item-title in the first row */
 }
 
 .item-prices {
-  position: absolute;
-  right: 0;
   display: flex;
   gap: 5px;
-  flex-direction: row-reverse;
   align-items: end;
+  grid-row: 2; /* Place item-prices in the second row */
 }
 
 .add-to-cart-button {
-  width: 100%;
   background: transparent;
   color: #fff;
   border: none;
   font-weight: bold;
-  font-size: 16px;
   cursor: pointer;
   transition: opacity 0.3s;
 }
@@ -79,7 +76,6 @@ ul .slick-dots .slick-thumb {
 @media (max-width: 1280px) {
   .item {
     width: 300px;
-    font-size: 16px;
     max-height: 600px;
   }
 
@@ -87,24 +83,15 @@ ul .slick-dots .slick-thumb {
     border-radius: 10px;
     height: 500px;
   }
-
-  .item-description {
-    font-size: 16px;
-  }
   .div-image {
     height: 290px;
     background-color: #2e32405f;
-  }
-  .item-price-new,
-  .item-price-old {
-    font-size: 16px;
   }
 }
 
 @media (max-width: 1024px) {
   .item {
-    width: 250px;
-    font-size: 16px;
+    width: 290px;
     max-height: 600px;
     overflow-y: scroll;
   }
@@ -112,25 +99,15 @@ ul .slick-dots .slick-thumb {
   .item-image {
     border-radius: 10px;
   }
-
-  .item-description {
-    font-size: 16px;
-  }
   .div-image {
     height: 240px;
     background-color: #2e32405f;
-  }
-
-  .item-price-new,
-  .item-price-old {
-    font-size: 16px;
   }
 }
 
 @media (max-width: 800px) {
   .item {
-    width: 290px;
-    font-size: 16px;
+    width: 320px;
     max-height: 600px;
     overflow-y: scroll;
   }
@@ -143,12 +120,7 @@ ul .slick-dots .slick-thumb {
 @media (max-width: 600px) {
   .item {
     width: 350px;
-    font-size: 16px;
     max-height: 600px;
-  }
-
-  .item-title {
-    font-size: 16px;
   }
 
   .item-image {

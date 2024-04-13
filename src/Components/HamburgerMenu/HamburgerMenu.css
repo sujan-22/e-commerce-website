@@ -141,7 +141,6 @@
   .hamburger-menu li ul li {
     padding: 5px 0;
     color: antiquewhite;
-    font-size: 15px; /* Example font size */
   }
 
   .hamburger-menu li ul li a {
@@ -167,7 +166,7 @@
   background: transparent;
   position: relative;
   font-weight: 700;
-  font-size: 16px;
+  text-transform: uppercase;
   -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
   box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
   transition: all 250ms;

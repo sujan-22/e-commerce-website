@@ -48,28 +48,12 @@
   margin-bottom: 10px;
   display: flex;
   gap: 20px;
+  font-weight: bold;
 }
 
 .productdisplay-description {
   margin-bottom: 20px;
-}
-
-.productdisplay-size {
-  margin-bottom: 20px;
-}
-
-.productdisplay-size h2 {
-  margin-bottom: 10px;
-}
-
-.productdisplay-sizes {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.productdisplay-sizes div {
-  margin-right: 10px;
-  margin-bottom: 10px;
+  font-weight: 300;
 }
 
 .productdisplay-category,
@@ -115,10 +99,6 @@
 }
 
 @media screen and (max-width: 650px) {
-  .productdisplay-details {
-    font-size: 14px; /* Adjust font size for details on smaller screens */
-  }
-
   .productdisplay-images img {
     width: 351px;
     height: 351px;

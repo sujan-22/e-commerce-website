@@ -35,8 +35,6 @@ const Item = ({ product, addToCart }) => {
       className="item"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      onTouchStart={() => setIsHovered(true)}
-      onTouchEnd={() => setIsHovered(false)}
     >
       <Slider {...settings}>
         {product.images.map((image, index) => (
@@ -62,14 +60,39 @@ const Item = ({ product, addToCart }) => {
       </Slider>
       <div className="item-info">
         <p className="item-title">{product.name}</p>
-        {isHovered && (
-          <div className="item-prices">
-            <button className="add-to-cart-button" onClick={handleAddToCart}>
-              Add to Cart
-            </button>
-          </div>
+        {window.innerWidth > 1024 && (
+          <>
+            {isHovered && (
+              <div className="item-prices">
+                <button
+                  className="add-to-cart-button"
+                  onClick={handleAddToCart}
+                >
+                  ADD TO CART
+                </button>
+              </div>
+            )}
+            {!isHovered && (
+              <div className="item-prices">
+                {product.onSale && (
+                  <div className="item-price-new">
+                    ${product.saleDetails.new_price}
+                  </div>
+                )}
+                <div
+                  className="item-price-old"
+                  style={{
+                    textDecoration: product.onSale ? "line-through" : "none",
+                    color: product.onSale ? "gray" : "inherit",
+                  }}
+                >
+                  ${product.price}
+                </div>
+              </div>
+            )}
+          </>
         )}
-        {!isHovered && (
+        {window.innerWidth <= 1024 && (
           <div className="item-prices">
             {product.onSale && (
               <div className="item-price-new">
@@ -81,7 +104,6 @@ const Item = ({ product, addToCart }) => {
               style={{
                 textDecoration: product.onSale ? "line-through" : "none",
                 color: product.onSale ? "gray" : "inherit",
-                fontSize: product.onSale ? "14px" : "16px",
               }}
             >
               ${product.price}

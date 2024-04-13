@@ -41,7 +41,6 @@
   list-style: none;
   gap: 50px;
   color: #ff0000;
-  font-size: 16px;
   font-weight: 500;
 }
 
@@ -74,7 +73,7 @@ ul li:hover {
 }
 
 .nav-login-cart svg {
-  font-size: 40px;
+  font-size: 25px;
   color: #faf2f2;
 }
 
@@ -84,31 +83,14 @@ ul li:hover {
   padding: 10px 25px;
   border: unset;
   border-radius: 50px;
-  color: #767676;
+  color: gray;
   z-index: 1;
-  background: transparent;
+  background: none;
   position: relative;
   font-weight: 700;
-  font-size: 16px;
-  -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
-  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  text-transform: uppercase;
   transition: all 250ms;
   overflow: hidden;
-}
-
-.nav-login-cart button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 0;
-  border-radius: 15px;
-  background-color: #212121;
-  z-index: -1;
-  -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
-  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
-  transition: all 250ms;
 }
 
 .nav-login-cart button:hover {
@@ -130,9 +112,9 @@ ul li:hover {
   margin-top: -35px;
   margin-left: -50px;
   border-radius: 100%;
-  font-size: 16px;
+  font-size: 15px;
   padding: auto;
-  color: #767676;
+  color: gray;
   font-weight: 700;
 }
 
@@ -160,7 +142,7 @@ Link {
   }
 
   .nav-logo svg {
-    font-size: 27px;
+    font-size: 25px;
   }
 
   .nav-logo p {
@@ -169,7 +151,6 @@ Link {
 
   .nav-menu {
     gap: 30px;
-    font-size: 16px;
   }
 
   .nav-login-cart {
@@ -179,11 +160,10 @@ Link {
   .nav-login-cart button {
     width: 100px;
     height: 40px;
-    font-size: 16px;
   }
 
   .nav-login-cart svg {
-    font-size: 35px;
+    font-size: 25px;
   }
 
   .nav-cart-count {

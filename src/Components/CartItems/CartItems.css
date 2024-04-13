@@ -17,12 +17,10 @@
   gap: 75px;
   padding: 20px 0px;
   color: #fff8f8;
-  font-size: 18px;
   font-weight: 600px;
 }
 
 .cartitems-format {
-  font-size: 17px;
   font-weight: 500;
 }
 
@@ -78,7 +76,6 @@
   outline: none;
   background: transparent;
   color: white;
-  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   border: 1px solid #ff0000;
@@ -114,7 +111,6 @@
   border: none;
   outline: none;
   background: transparent;
-  font-size: 16px;
   width: 330px;
   height: 50px;
   padding: 10px;
@@ -126,7 +122,6 @@
   outline: none;
   background: transparent;
   color: white;
-  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   border: none;
@@ -148,7 +143,6 @@
     grid-template-columns: 0.5fr 3fr 0.5fr 0.5fr 0.5fr 0.5fr;
     gap: 20px;
     padding: 15px 0px;
-    font-size: 15px;
   }
 
   .carticon-product-icon {
@@ -161,7 +155,6 @@
 
   .cartitems-quantity {
     width: auto;
-    height: 30px;
   }
 
   .cartitems-down {
@@ -177,7 +170,6 @@
   .cartitems-total button {
     max-width: 200px;
     height: 45px;
-    font-size: 13px;
   }
 
   .cartitems-promobox {
@@ -228,13 +220,11 @@
   }
 
   .cartitems-title {
-    font-size: 16px; /* Adjust font size as needed */
     font-weight: bold;
     margin-bottom: 5px;
   }
 
   .cartitems-price {
-    font-size: 14px; /* Adjust font size as needed */
     color: #888;
   }
 
@@ -255,7 +245,6 @@
     background: transparent;
     border: none;
     color: white;
-    font-size: large;
     width: auto;
   }
 }
