@@ -5,7 +5,7 @@
 
 .shop-image-container {
   position: relative;
-  margin-right: 20px; /* Add margin between images */
+  margin: 10px;
   border-radius: 10px; /* Add border radius */
 }
 
@@ -47,6 +47,11 @@
   background: transparent;
   border: none;
   cursor: pointer;
+}
+
+.slick-next:before,
+.slick-prev:before {
+  font-size: 40px;
 }
 
 /* Responsive styles */

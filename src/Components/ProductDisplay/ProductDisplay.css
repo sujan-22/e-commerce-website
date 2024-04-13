@@ -41,11 +41,13 @@
 }
 
 .productdisplay-stars p {
-  margin-left: 5px;
+  margin: auto 5px auto 0;
 }
 
 .productdisplay-prices {
   margin-bottom: 10px;
+  display: flex;
+  gap: 20px;
 }
 
 .productdisplay-description {
@@ -86,11 +88,13 @@
   background-color: transparent;
   border: none;
   outline: none;
-  color: rgb(255, 0, 0);
+  color: gray;
   margin-bottom: 10px;
   font-weight: bold;
   font-family: Poppins;
   transition: all 0.3s ease;
+  width: fit-content;
+  padding-left: 0;
 }
 
 @media screen and (max-width: 1200px) {

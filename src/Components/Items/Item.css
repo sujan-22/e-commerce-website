@@ -31,6 +31,10 @@
 .item-prices {
   position: absolute;
   right: 0;
+  display: flex;
+  gap: 5px;
+  flex-direction: row-reverse;
+  align-items: end;
 }
 
 .add-to-cart-button {

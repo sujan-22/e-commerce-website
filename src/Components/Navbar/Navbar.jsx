@@ -41,10 +41,10 @@ const Navbar = () => {
         ))}
       </ul>
       <div className="nav-logo">
-        <Link to="/">
+        <Link to="/" style={{ textDecoration: "none", display: "contents" }}>
           <GiOwl className="svg" />
+          <p>NIGHT OWL</p>
         </Link>
-        <p>NIGHT OWL</p>
       </div>
       <div className="nav-login-cart">
         {localStorage.getItem("auth_token") ? (

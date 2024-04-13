@@ -38,11 +38,9 @@ const Shop = () => {
         className={className}
         style={{
           ...style,
-          left: 10,
-          zIndex: 1,
-          fontSize: "24px !important",
-          display: "block",
-        }} // Position the arrow to the left
+          left: "5%",
+          zIndex: 2,
+        }}
         onClick={onClick}
       />
     );
@@ -54,7 +52,7 @@ const Shop = () => {
     return (
       <div
         className={className}
-        style={{ ...style, right: 25, zIndex: 2, fontSize: "30px !important" }} // Position the arrow to the right
+        style={{ ...style, right: "9%", zIndex: 2 }} // Position the arrow to the right
         onClick={onClick}
       />
     );
@@ -107,7 +105,6 @@ const Shop = () => {
     <>
       <div className="shop-carousel-container">
         {" "}
-        {/* Container div */}
         <div className="shop-carousel">
           <Slider {...settings}>
             {randomProducts.map((product) => (

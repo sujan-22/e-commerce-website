@@ -53,8 +53,6 @@ const ShopContextProvider = (props) => {
       });
   };
 
-  console.log(all_products);
-
   const addToCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
     if (localStorage.getItem("auth_token")) {

@@ -71,7 +71,21 @@ const Item = ({ product, addToCart }) => {
         )}
         {!isHovered && (
           <div className="item-prices">
-            <div className="item-price-new">${product.price}</div>
+            {product.onSale && (
+              <div className="item-price-new">
+                ${product.saleDetails.new_price}
+              </div>
+            )}
+            <div
+              className="item-price-old"
+              style={{
+                textDecoration: product.onSale ? "line-through" : "none",
+                color: product.onSale ? "gray" : "inherit",
+                fontSize: product.onSale ? "14px" : "16px",
+              }}
+            >
+              ${product.price}
+            </div>
           </div>
         )}
       </div>
