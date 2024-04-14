@@ -11,7 +11,7 @@ import { specialItems } from "../../data";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { getTotalCartItems, userData } = useContext(ShopContext);
+  const { getTotalCartItems } = useContext(ShopContext);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const location = useLocation();
 
@@ -47,25 +47,6 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="nav-login-cart">
-        {localStorage.getItem("auth_token") ? (
-          <>
-            {windowWidth > 800 && (
-              <img src={userData.avatarUrl} alt="Avatar" className="avatar" />
-            )}
-            <button
-              onClick={() => {
-                localStorage.removeItem("auth_token");
-                window.location.replace("/");
-              }}
-            >
-              Logout
-            </button>
-          </>
-        ) : (
-          <Link to="/login">
-            <button>Login</button>
-          </Link>
-        )}
         <Link to="/cart">
           <PiShoppingCartSimpleBold className="cart-icon" />
         </Link>

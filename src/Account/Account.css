@@ -1,0 +1,25 @@
+.account-container {
+  max-width: 90%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 8px;
+  color: white;
+}
+
+.user-details p {
+  margin: 5px 0;
+}
+
+.logout-button {
+  color: #fff;
+  border: none;
+  padding: 5px 0;
+  border-radius: 5px;
+  cursor: pointer;
+  background: none;
+  font-size: 14px;
+  text-transform: uppercase;
+}

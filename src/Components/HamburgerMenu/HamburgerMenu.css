@@ -3,15 +3,12 @@
 }
 
 .hamburger-menu {
-  font-size: 16px;
   display: flex;
   flex-direction: column;
   position: fixed;
-  inset: 75px 75% 0 0; /* Adjust inset to start after the navbar */
+  inset: 75px 70% 0 0; /* Adjust inset to start after the navbar */
   gap: 20px;
-  background-color: #01111ab5;
-  backdrop-filter: blur(30px);
-  -webkit-backdrop-filter: blur(10px);
+  background-color: #02050fed;
   height: calc(100vh - 75px); /* Adjust height to fill the remaining viewport */
   transform: translateX(-100%);
   transition: 0.9s;
@@ -22,11 +19,6 @@
   align-items: flex-start;
   padding: 10px;
   min-width: 300px;
-}
-
-.hamburger-menu li.active a {
-  font-weight: bold;
-  color: #ff6347;
 }
 
 .showMenu {
@@ -99,17 +91,87 @@
   vertical-align: middle;
 }
 
+/* HamburgerMenu.css */
+
+/* Style for the form container */
+.FormContainer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Style for the form elements */
+.FormContainer input,
+.FormContainer button {
+  padding: 10px;
+  margin: 5px;
+  border: none;
+  background: transparent;
+  outline: none;
+  color: #fff;
+}
+
+.FormContainer input {
+  border-bottom: 1px solid gray;
+  text-transform: uppercase;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  background: transparent;
+  outline: none;
+  color: #fff;
+}
+
+.FormContainer button {
+  cursor: pointer;
+}
+
+.loginSignupButtons {
+  display: flex;
+  justify-content: left;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.toggleButtonContainer button {
+  margin: 0 5px;
+}
+
+/* Style for the link */
+.FormContainer a {
+  text-decoration: none;
+}
+
+.FormContainer a:hover {
+  text-decoration: underline;
+}
+
+.account {
+  margin-top: auto;
+  position: relative;
+  bottom: 15px;
+}
+
+.account a button {
+  background: transparent;
+  color: gray;
+  outline: none;
+  border: none;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 @media (max-width: 800px) {
   .hamburger-menu {
-    font-size: 16px;
     display: flex;
     flex-direction: column;
     position: fixed;
-    inset: 75px 75% 0 0; /* Adjust inset to start after the navbar */
+    inset: 75px 0 0 0; /* Adjust inset to start after the navbar */
     gap: 20px;
-    background-color: #01111ab5;
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(10px);
     height: calc(
       100vh - 75px
     ); /* Adjust height to fill the remaining viewport */
@@ -150,11 +212,6 @@
     padding: 5px 15px;
     display: block;
   }
-
-  .hamburger-menu li ul li.active a {
-    font-weight: bold;
-    color: #ff6347;
-  }
 }
 
 .nav_login_cart button {
@@ -172,6 +229,7 @@
   box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
   transition: all 250ms;
   overflow: hidden;
+  font-size: 14px;
 }
 
 .nav_login_cart button::before {

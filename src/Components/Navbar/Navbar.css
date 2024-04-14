@@ -7,9 +7,7 @@
   padding: 16px;
   box-shadow: 0 1px 3px -2px black;
   align-items: center;
-  background-color: #01111a8d;
-  backdrop-filter: blur(30px);
-  -webkit-backdrop-filter: blur(10px);
+  background-color: #02050fed;
   align-items: center;
   height: 75px;
 }
@@ -92,6 +90,7 @@ ul li:hover {
   text-transform: uppercase;
   transition: all 250ms;
   overflow: hidden;
+  font-size: 14px;
 }
 
 .nav-login-cart button:hover {

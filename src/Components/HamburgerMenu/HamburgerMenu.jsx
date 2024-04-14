@@ -1,16 +1,68 @@
-import React, { useState, useEffect, useContext, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { navData, specialItems } from "../../data";
-import { RiLoginBoxLine } from "react-icons/ri";
-import { ShopContext } from "../../Context/ShopContext";
 import "./HamburgerMenu.css";
+import { navData, specialItems } from "../../data";
 
 const HamburgerMenu = () => {
-  const { userData } = useContext(ShopContext);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const location = useLocation();
   const menuRef = useRef(null);
   const isLoggedIn = localStorage.getItem("auth_token");
+  const [formData, setFormData] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    password: "",
+  });
+  const [showContainer, setShowContainer] = useState(true);
+  const [isLogin, setIsLogin] = useState(true);
+
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
+
+  const changeHandler = (e) => {
+    const { name, value } = e.target;
+    const transformedValue = name === "email" ? value.toLowerCase() : value;
+    setFormData({ ...formData, [name]: transformedValue });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setShowContainer(false);
+    let url = isLogin ? `${backendUrl}/login` : `${backendUrl}/signup`;
+    console.log(url);
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      const responseData = await response.json();
+      if (responseData.success) {
+        localStorage.setItem("auth_token", responseData.token);
+        window.location.replace("/");
+        toggleForm();
+      } else {
+        alert(responseData.errors);
+        setShowContainer(true);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      setShowContainer(true);
+    }
+  };
+
+  const toggleForm = () => {
+    setIsLogin(!isLogin);
+    setFormData({
+      firstname: "",
+      lastname: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    });
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -102,40 +154,75 @@ const HamburgerMenu = () => {
                 ))}
               </ul>
             </li>
-            {isLoggedIn && (
-              <div className="user-info">
-                <img
-                  src={userData.avatarUrl}
-                  alt="Avatar"
-                  className="user-avatar"
-                />
-                <p className="user-email" style={{ fontWeight: "bold" }}>
-                  {userData.email}
-                </p>{" "}
-              </div>
-            )}
-            <div className="nav_login_cart">
-              {isLoggedIn ? (
-                <>
-                  <button
-                    onClick={() => {
-                      localStorage.removeItem("auth_token");
-                      window.location.replace("/");
-                    }}
-                  >
-                    Logout
-                  </button>
-                </>
-              ) : (
-                <Link to="/login">
-                  <button>
-                    <RiLoginBoxLine className="icon" />
-                    Login
-                  </button>
-                </Link>
-              )}
-            </div>
+            <li></li>
           </>
+        )}
+        {!isLoggedIn && (
+          <div className="FormContainer">
+            <div className="loginSignupButtons">
+              <button
+                className={isLogin ? "active" : ""}
+                onClick={() => setIsLogin(true)}
+              >
+                LOGIN
+              </button>
+              <button
+                className={!isLogin ? "active" : ""}
+                onClick={() => setIsLogin(false)}
+              >
+                SIGNUP
+              </button>
+            </div>
+            <form onSubmit={handleSubmit}>
+              {!isLogin && (
+                <>
+                  <input
+                    className="inputField"
+                    name="firstname"
+                    value={formData.firstname}
+                    onChange={changeHandler}
+                    type="text"
+                    placeholder="First Name"
+                  />
+                  <input
+                    className="inputField"
+                    name="lastname"
+                    value={formData.lastname}
+                    onChange={changeHandler}
+                    type="text"
+                    placeholder="Last Name"
+                  />
+                </>
+              )}
+              <input
+                className="inputField"
+                name="email"
+                value={formData.email}
+                onChange={changeHandler}
+                type="email"
+                placeholder="Email"
+              />
+              <input
+                className="inputField"
+                name="password"
+                value={formData.password}
+                onChange={changeHandler}
+                type="password"
+                placeholder="Password"
+                autoCapitalize="none"
+              />
+              <button type="submit" disabled={!showContainer}>
+                SUBMIT
+              </button>
+            </form>
+          </div>
+        )}
+        {isLoggedIn && (
+          <div className="account">
+            <Link to="/account">
+              <button>ACCOUNT</button>
+            </Link>
+          </div>
         )}
       </ul>
     </div>

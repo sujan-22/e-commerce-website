@@ -6,7 +6,7 @@ import Navbar from "./Components/Navbar/Navbar";
 import Shop from "./Pages/Shop";
 import Store from "./Pages/Store";
 import Cart from "./Pages/Cart";
-import LoginSignUp from "./Pages/LoginSignUp";
+import Account from "./Account/Account";
 import ShopCategory from "./Pages/ShopCategory";
 import Product from "./Pages/Product";
 import Footer from "./Components/Footer/Footer";
@@ -71,7 +71,7 @@ function App() {
                     <Route path=":productId" element={<Product />} />
                   </Route>
                   <Route path="/cart" element={<Cart />} />
-                  <Route path="/login" element={<LoginSignUp />} />
+                  <Route path="/account" element={<Account />} />
                 </Routes>
               </CSSTransition>
             </TransitionGroup>
