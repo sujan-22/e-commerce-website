@@ -96,7 +96,7 @@
 /* Style for the form container */
 .FormContainer {
   position: absolute;
-  bottom: 0;
+  bottom: 15px;
   left: 0;
   width: 100%;
   padding: 20px;
