@@ -31,22 +31,24 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrolled = window.scrollY;
-      if (scrolled === 0) {
-        // If scrolled to top, make navbar transparent
+      const isTop = scrolled === 0;
+      const isHomePage = location.pathname === "/";
+
+      if (isHomePage && isTop) {
+        setNavbarColor("#020308");
+      } else if (!isHomePage && isTop) {
         setNavbarColor("transparent");
       } else {
-        // If scrolled down, change navbar color to #02050fed
         setNavbarColor("#02050fed");
       }
     };
 
     window.addEventListener("scroll", handleScroll);
 
-    // Cleanup
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [location.pathname]);
 
   return (
     <div className="navbar" style={{ backgroundColor: navbarColor }}>

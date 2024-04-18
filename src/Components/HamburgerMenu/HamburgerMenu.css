@@ -111,6 +111,7 @@
   background: transparent;
   outline: none;
   color: #fff;
+  border-radius: unset;
 }
 
 .FormContainer input {

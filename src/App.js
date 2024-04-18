@@ -11,28 +11,33 @@ import Product from "./Pages/Product";
 import Footer from "./Components/Footer/Footer";
 import { ShopContext } from "./Context/ShopContext";
 import MoveToTop from "./Pages/moveToTop";
-import loader from "./assets/loader.gif";
+import { DNA } from "react-loader-spinner";
 
 function App() {
   const { loading } = useContext(ShopContext);
   const [dataLoaded, setDataLoaded] = useState(false);
-  const [darkMode, setDarkMode] = useState(true); // State for dark mode
+  const [darkMode, setDarkMode] = useState(true);
 
-  // useEffect to monitor loading state and update dataLoaded accordingly
   useEffect(() => {
     setDataLoaded(!loading);
   }, [loading]);
 
-  // Toggle function for dark/light mode
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
   };
 
   return (
     <div className={darkMode ? "dark-mode" : "light-mode"}>
-      {loading ? ( // Conditionally render loader if loading is true
+      {loading ? (
         <div className="loader-container">
-          <img src={loader} alt="" />
+          <DNA
+            visible={true}
+            height="150"
+            width="150"
+            ariaLabel="dna-loading"
+            wrapperStyle={{}}
+            wrapperClass="dna-wrapper"
+          />
         </div>
       ) : (
         dataLoaded && (
