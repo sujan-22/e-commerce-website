@@ -8,7 +8,6 @@ body {
   font-family: "Helvetica Now Text", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #02050f;
   text-transform: uppercase;
   font-size: 14px;
 }
@@ -16,6 +15,17 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.dark-mode {
+  background-color: #02050f;
+  color: white;
+}
+
+/* Light mode specific styles */
+.light-mode {
+  background-color: white;
+  color: #02050f;
 }
 
 ::-webkit-scrollbar {

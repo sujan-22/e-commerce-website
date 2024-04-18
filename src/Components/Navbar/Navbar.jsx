@@ -13,6 +13,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { getTotalCartItems } = useContext(ShopContext);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [navbarColor, setNavbarColor] = useState("transparent");
   const location = useLocation();
 
   useEffect(() => {
@@ -27,8 +28,28 @@ const Navbar = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrolled = window.scrollY;
+      if (scrolled === 0) {
+        // If scrolled to top, make navbar transparent
+        setNavbarColor("transparent");
+      } else {
+        // If scrolled down, change navbar color to #02050fed
+        setNavbarColor("#02050fed");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Cleanup
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <div className="navbar">
+    <div className="navbar" style={{ backgroundColor: navbarColor }}>
       <ul className={`nav-menu ${menuOpen ? "visible" : ""}`}>
         {specialItems.map((item, index) => (
           <NavItem

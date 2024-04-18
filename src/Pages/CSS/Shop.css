@@ -1,6 +1,12 @@
 .shop-carousel-container {
-  max-width: 1300px; /* Limit the width of the slider */
+  max-width: 1400px; /* Limit the width of the slider */
   margin: 0 auto; /* Horizontally center the slider within the container */
+}
+
+.background-image {
+  width: 100%;
+  margin-top: -7%;
+  margin-bottom: 3%;
 }
 
 .shop-image-container {

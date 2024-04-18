@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../Pages/CSS/Shop.css";
 import { ShopContext } from "../Context/ShopContext";
+import fullWidthImage from "../assets/bg2.jpeg";
 
 const Shop = () => {
   const { all_products } = useContext(ShopContext);
@@ -103,6 +104,9 @@ const Shop = () => {
 
   return (
     <>
+      <div className="full-width-image-container">
+        <img src={fullWidthImage} alt="" className="background-image" />
+      </div>
       <div className="shop-carousel-container">
         {" "}
         <div className="shop-carousel">

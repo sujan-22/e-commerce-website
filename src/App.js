@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { PropagateLoader } from "react-spinners";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import Navbar from "./Components/Navbar/Navbar";
@@ -12,26 +11,33 @@ import Product from "./Pages/Product";
 import Footer from "./Components/Footer/Footer";
 import { ShopContext } from "./Context/ShopContext";
 import MoveToTop from "./Pages/moveToTop";
+import loader from "./assets/loader.gif";
 
 function App() {
   const { loading } = useContext(ShopContext);
   const [dataLoaded, setDataLoaded] = useState(false);
+  const [darkMode, setDarkMode] = useState(true); // State for dark mode
 
   // useEffect to monitor loading state and update dataLoaded accordingly
   useEffect(() => {
     setDataLoaded(!loading);
   }, [loading]);
 
+  // Toggle function for dark/light mode
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
   return (
-    <div>
+    <div className={darkMode ? "dark-mode" : "light-mode"}>
       {loading ? ( // Conditionally render loader if loading is true
         <div className="loader-container">
-          <PropagateLoader color="blue" loading={loading} size={15} />
+          <img src={loader} alt="" />
         </div>
       ) : (
         dataLoaded && (
           <BrowserRouter>
-            <Navbar />
+            <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
             <MoveToTop />
             <TransitionGroup>
               <CSSTransition
@@ -78,7 +84,7 @@ function App() {
           </BrowserRouter>
         )
       )}
-      <Footer />
+      <Footer darkMode={darkMode} />
     </div>
   );
 }
