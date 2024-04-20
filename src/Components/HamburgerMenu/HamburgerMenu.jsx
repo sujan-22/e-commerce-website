@@ -6,6 +6,9 @@ import { navData, specialItems } from "../../data";
 const HamburgerMenu = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const location = useLocation();
+  const [hovered, setHoverd] = useState(false);
+  const [hovered1, setHoverd1] = useState(false);
+  const [hovered2, setHoverd2] = useState(false);
   const menuRef = useRef(null);
   const isLoggedIn = localStorage.getItem("auth_token");
   const [formData, setFormData] = useState({
@@ -161,16 +164,20 @@ const HamburgerMenu = () => {
           <div className="FormContainer">
             <div className="loginSignupButtons">
               <button
+                onMouseEnter={() => setHoverd1(true)}
+                onMouseLeave={() => setHoverd1(false)}
                 className={isLogin ? "active" : ""}
                 onClick={() => setIsLogin(true)}
               >
-                LOGIN
+                {hovered1 ? "{LOGIN}" : "LOGIN"}
               </button>
               <button
+                onMouseEnter={() => setHoverd2(true)}
+                onMouseLeave={() => setHoverd2(false)}
                 className={!isLogin ? "active" : ""}
                 onClick={() => setIsLogin(false)}
               >
-                SIGNUP
+                {hovered2 ? "{SIGNUP}" : "SIGNUP"}
               </button>
             </div>
             <form onSubmit={handleSubmit}>
@@ -211,8 +218,13 @@ const HamburgerMenu = () => {
                 placeholder="Password"
                 autoCapitalize="none"
               />
-              <button type="submit" disabled={!showContainer}>
-                SUBMIT
+              <button
+                onMouseEnter={() => setHoverd(true)}
+                onMouseLeave={() => setHoverd(false)}
+                type="submit"
+                disabled={!showContainer}
+              >
+                {hovered ? "{SUBMIT}" : "SUBMIT"}
               </button>
             </form>
           </div>

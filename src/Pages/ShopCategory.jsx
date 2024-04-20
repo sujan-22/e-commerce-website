@@ -1,103 +1,49 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
+import { useSpring, animated } from "react-spring";
 import "./CSS/ShopCategory.css";
 import { ShopContext } from "../Context/ShopContext";
 import Item from "../Components/Items/Item";
-import { Dropdown } from "primereact/dropdown";
 import "primereact/resources/themes/saga-blue/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 
 const ShopCategory = (props) => {
-  const { all_products, addToCart } = useContext(ShopContext);
-  const [sortOption, setSortOption] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 6;
+  const { all_products, searchResults, addToCart, searchQuery, loading } =
+    useContext(ShopContext);
 
-  const handleSortChange = (e) => {
-    setSortOption(e.value);
-  };
+  const noResultsAnimation = useSpring({
+    opacity: searchQuery && !searchResults.length ? 1 : 0,
+    transform:
+      searchQuery && !searchResults.length
+        ? "translateY(0%)"
+        : "translateY(-100%)",
+  });
 
-  if (!all_products) {
+  if (loading) {
     return <div>Loading...</div>;
   }
 
   const filteredProducts = all_products.filter(
     (item) => item.category === props.category
   );
-
-  const sortedProducts = filteredProducts;
-
-  const totalPages = Math.ceil(sortedProducts.length / productsPerPage);
-
-  const handleNextPage = () => {
-    const nextPage = currentPage + 1;
-    setCurrentPage(nextPage);
-    setTimeout(scrollToTop, 100);
-  };
-
-  const handlePrevPage = () => {
-    const prevPage = currentPage - 1;
-    setCurrentPage(prevPage);
-    setTimeout(scrollToTop, 100);
-  };
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth", // Add smooth scrolling behavior
-    });
-  };
-
-  const indexOfLastProduct = currentPage * productsPerPage;
-  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = sortedProducts.slice(
-    indexOfFirstProduct,
-    indexOfLastProduct
-  );
-  const lastDisplayedIndex = Math.min(
-    indexOfLastProduct,
-    sortedProducts.length
-  );
-
-  const cities = [
-    { label: "Default", value: null },
-    { label: "Price: Low to High", value: "lowToHigh" },
-    { label: "Price: High to Low", value: "highToLow" },
-  ];
+  const productsToDisplay = searchQuery ? searchResults : filteredProducts;
 
   return (
     <div className="shop-category">
-      <div className="shopcategory-indexSort">
-        <p>
-          <span>
-            Showing {indexOfFirstProduct + 1}-{lastDisplayedIndex} out of{" "}
-            {sortedProducts.length} products
-          </span>{" "}
-        </p>
-
-        {/* <div className="custom-dropdown">
-          <Dropdown
-            value={sortOption}
-            options={cities}
-            onChange={handleSortChange}
-            optionLabel="label"
-            placeholder="Filter"
-          />
-        </div> */}
-      </div>
-      <div className="shopcategory-products">
-        {currentProducts.map((product, i) => (
-          <Item product={product} addToCart={addToCart} key={i} />
-        ))}
-      </div>
-      <div className="pagination">
-        <button onClick={handlePrevPage} disabled={currentPage === 1}>
-          Prev
-        </button>
-        <button onClick={handleNextPage} disabled={currentPage === totalPages}>
-          Next
-        </button>
-      </div>
+      {searchQuery && !productsToDisplay.length ? (
+        <animated.div style={noResultsAnimation} className="no-results">
+          No matching products found!
+        </animated.div>
+      ) : null}
+      {productsToDisplay.length === 0 ? null : (
+        <>
+          <div className="shopcategory-products">
+            {productsToDisplay.map((product, i) => (
+              <Item product={product} addToCart={addToCart} key={i} />
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 };

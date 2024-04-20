@@ -68,7 +68,7 @@ const Item = ({ product, addToCart }) => {
                   className="add-to-cart-button"
                   onClick={handleAddToCart}
                 >
-                  ADD TO CART
+                  {"{ADD TO CART}"}
                 </button>
               </div>
             )}

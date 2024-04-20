@@ -15,6 +15,8 @@ const ShopContextProvider = (props) => {
   const [cartItems, setCartItems] = useState(getDefaultCart());
   const [userData, setUserData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
 
   const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
@@ -51,6 +53,19 @@ const ShopContextProvider = (props) => {
         console.error("Error fetching products:", error);
         setLoading(false); // Set loading to false in case of error
       });
+  };
+
+  const searchProducts = (query) => {
+    setSearchQuery(query);
+    const results = all_products.filter((product) =>
+      product.name.toLowerCase().includes(query.toLowerCase())
+    );
+    setSearchResults(results);
+  };
+
+  const clearSearchResults = () => {
+    setSearchQuery("");
+    setSearchResults([]);
   };
 
   const addToCart = (itemId) => {
@@ -121,6 +136,10 @@ const ShopContextProvider = (props) => {
     removeFromCart,
     userData,
     loading,
+    searchResults,
+    searchProducts,
+    clearSearchResults,
+    searchQuery,
   };
 
   return (

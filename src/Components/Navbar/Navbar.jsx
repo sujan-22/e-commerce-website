@@ -3,7 +3,7 @@ import "./Navbar.css";
 import { PiShoppingCartSimpleBold } from "react-icons/pi";
 import { GiOwl } from "react-icons/gi";
 import { useContext, useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Badge from "react-bootstrap/Badge";
 import { ShopContext } from "../../Context/ShopContext";
 import HamburgerMenu from "../HamburgerMenu/HamburgerMenu";
@@ -11,10 +11,13 @@ import { specialItems } from "../../data";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { getTotalCartItems } = useContext(ShopContext);
+  const { getTotalCartItems, searchProducts, clearSearchResults } =
+    useContext(ShopContext);
+  const [searchQuery, setSearchQuery] = useState("");
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [navbarColor, setNavbarColor] = useState("transparent");
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleResize = () => {
@@ -27,6 +30,17 @@ const Navbar = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const handleSearchChange = (event) => {
+    const { value } = event.target;
+    setSearchQuery(value);
+    if (value.trim() !== "") {
+      searchProducts(value);
+      navigate("/store");
+    } else {
+      clearSearchResults();
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -68,6 +82,17 @@ const Navbar = () => {
           <GiOwl className="svg" />
           <p>NIGHT OWL</p>
         </Link>
+      </div>
+
+      <div className="nav-search">
+        <input
+          className="inputField"
+          name="search"
+          value={searchQuery}
+          onChange={handleSearchChange}
+          type="text"
+          placeholder="SEARCH"
+        />
       </div>
       <div className="nav-login-cart">
         <Link to="/cart">

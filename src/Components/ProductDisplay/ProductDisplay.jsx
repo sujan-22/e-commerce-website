@@ -88,14 +88,11 @@ const ProductDisplay = ({ product }) => {
           onClick={() => addToCart(product.id)}
           className="add-to-cart"
         >
-          {isHovered ? "{ ADD TO CART }" : "ADD TO CART"}
+          {isHovered ? "{ADD TO CART}" : "ADD TO CART"}
         </button>
         <p className="productdisplay-category">
           <span>Category: </span>
           {product.category}
-        </p>
-        <p className="productdisplay-tags">
-          <span>Tags: </span>Modern, Latest
         </p>
       </div>
     </div>

@@ -22,6 +22,10 @@
   font-size: 40px;
 }
 
+.textfield {
+  color: white;
+}
+
 .nav-logo p {
   color: #faf2f2;
   font-size: 38px;
@@ -128,6 +132,21 @@ Link {
 
 .drop-down {
   display: none;
+}
+
+.nav-search input {
+  border-bottom: 1px solid gray;
+  text-transform: uppercase;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  background: transparent;
+  outline: unset;
+  color: #fff;
+  border-radius: unset;
+  border: unset;
+  border-bottom: 1px solid #fff;
 }
 
 .avatar {
