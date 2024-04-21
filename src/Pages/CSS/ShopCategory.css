@@ -3,7 +3,6 @@
   margin: 10px 150px;
   justify-content: space-between;
   align-items: center;
-  color: white;
 }
 
 .shopcategory-products .shop-category {
@@ -34,27 +33,6 @@
 
 .product-link {
   text-decoration: none;
-}
-
-.pagination {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-}
-
-.pagination button {
-  padding: 10px 20px;
-  margin: 10px 5px;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: #02050f;
-}
-
-.pagination button:disabled {
-  cursor: not-allowed;
-  color: gray;
 }
 
 @media (max-width: 1280px) {

@@ -6,9 +6,9 @@
   display: flex;
   flex-direction: column;
   position: fixed;
-  inset: 120px 70% 0 0; /* Adjust inset to start after the navbar */
+  inset: 120px 70% 0 0;
   gap: 20px;
-  background-color: #02050fed;
+  background-color: #ffffffe6;
   height: calc(100vh - 120px);
   transform: translateX(-100%);
   transition: 0.9s;
@@ -16,7 +16,7 @@
   list-style: none;
   justify-content: flex-start;
   align-items: flex-start;
-  padding: 10px 30px;
+  padding: 10px 20px;
   min-width: 300px;
   margin: 0;
 }
@@ -58,7 +58,6 @@ ul .inputField,
   border: none;
   background: transparent;
   outline: none;
-  color: #fff;
   border-radius: unset;
 }
 
@@ -72,7 +71,6 @@ ul .inputField,
   margin: 5px 0;
   background: transparent;
   outline: none;
-  color: #fff;
 }
 
 .FormContainer button {
@@ -142,20 +140,12 @@ ul .inputField,
 
   .hamburger-menu li ul li {
     padding: 5px 5px;
-    color: rgb(255, 255, 255);
   }
 
   .hamburger-menu li ul li a {
-    color: rgb(255, 255, 255);
     text-decoration: none;
     padding: 5px 15px;
     display: block;
-  }
-}
-
-@media (max-width: 500px) {
-  .hamburger-menu {
-    padding: 10px;
   }
 }
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { HoveredText } from "../HamburgerMenu/HamburgerMenu";
 
 const LoginSignup = () => {
@@ -11,6 +11,7 @@ const LoginSignup = () => {
   });
   const [showContainer, setShowContainer] = useState(true);
   const [isLogin, setIsLogin] = useState(true);
+  const formRef = useRef(null);
 
   const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
@@ -77,11 +78,15 @@ const LoginSignup = () => {
             >
               <HoveredText text={"SIGN UP"} />
             </button>
-            <button type="submit" disabled={!showContainer}>
+            <button
+              type="button"
+              onClick={handleSubmit}
+              disabled={!showContainer}
+            >
               <HoveredText text={"ENTER"} />
             </button>
           </div>
-          <form onSubmit={handleSubmit}>
+          <form ref={formRef}>
             {!isLogin && (
               <>
                 <input

@@ -3,12 +3,6 @@
   margin: 0 auto; /* Horizontally center the slider within the container */
 }
 
-.background-image {
-  width: 100%;
-  margin-top: -7%;
-  margin-bottom: 3%;
-}
-
 .shop-image-container {
   position: relative;
   margin: 10px;
@@ -58,6 +52,22 @@
 .slick-next:before,
 .slick-prev:before {
   font-size: 40px;
+}
+
+.full-width-image-container {
+  width: 100%;
+  height: calc(
+    100vh - 100px
+  ); /* Adjusted to subtract the height of the navbar */
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Responsive styles */

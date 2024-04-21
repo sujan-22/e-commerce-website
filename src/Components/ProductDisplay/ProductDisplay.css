@@ -2,7 +2,6 @@
   display: grid;
   grid-template-columns: 1fr 1fr; /* Two columns with equal width */
   grid-gap: 20px; /* Gap between the columns */
-  color: white;
   width: 90%;
   margin: auto;
   margin-top: 10px;

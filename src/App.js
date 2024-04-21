@@ -14,15 +14,30 @@ import { DNA } from "react-loader-spinner";
 function App() {
   const { loading } = useContext(ShopContext);
   const [dataLoaded, setDataLoaded] = useState(false);
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(() => {
+    // Check if dark mode preference is stored in local storage
+    const storedMode = localStorage.getItem("darkMode");
+    return storedMode ? JSON.parse(storedMode) : true; // Default to true if not found
+  });
+  const [backgroundColor, setBackgroundColor] = useState(
+    darkMode ? "#02050f" : "#ffffffe9"
+  );
 
   useEffect(() => {
     setDataLoaded(!loading);
   }, [loading]);
 
   const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
+    const newMode = !darkMode;
+    setDarkMode(newMode);
+    // Store the new mode preference in local storage
+    localStorage.setItem("darkMode", JSON.stringify(newMode));
   };
+
+  useEffect(() => {
+    // Update background color based on mode
+    setBackgroundColor(darkMode ? "#02050f" : "#ffffffe9");
+  }, [darkMode]);
 
   return (
     <div className={darkMode ? "dark-mode" : "light-mode"}>
@@ -40,7 +55,11 @@ function App() {
       ) : (
         dataLoaded && (
           <BrowserRouter>
-            <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+            <Navbar
+              backgroundColor={backgroundColor}
+              darkMode={darkMode}
+              toggleDarkMode={toggleDarkMode}
+            />
             <MoveToTop />
             <TransitionGroup>
               <CSSTransition

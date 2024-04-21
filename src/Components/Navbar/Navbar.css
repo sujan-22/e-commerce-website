@@ -1,6 +1,5 @@
 .nav-center {
   text-align: center;
-  color: #faf2f2;
   font-size: 20px;
   font-weight: 700;
   border: none !important;
@@ -8,7 +7,6 @@
 }
 
 .nav-center a {
-  color: #faf2f2;
   text-decoration: none;
 }
 
@@ -32,12 +30,11 @@
   align-items: center;
   gap: 5px;
   text-decoration: none;
-  color: #000000;
-  background-color: white;
 }
 
 .nav-login-cart a {
   text-decoration: none;
+  color: unset;
 }
 
 .navbar p {
@@ -57,7 +54,7 @@
   flex-direction: column-reverse;
   align-items: center;
   padding: 10px 20px;
-  height: 100px; /* Set navbar height */
+  height: 100px;
 }
 
 .navbar > .nav-row {
@@ -70,6 +67,11 @@
 .logo-wrapper {
   display: flex;
   align-items: center;
+}
+
+.logo-wrapper a {
+  text-decoration: none;
+  color: unset;
 }
 
 @media (max-width: 1024px) {

@@ -22,10 +22,9 @@ code {
   color: white;
 }
 
-/* Light mode specific styles */
 .light-mode {
-  background-color: white;
-  color: #02050f;
+  background-color: #ffffffe9;
+  color: black;
 }
 
 ::-webkit-scrollbar {

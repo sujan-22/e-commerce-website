@@ -11,6 +11,8 @@ const HamburgerMenu = ({
   showSpecialItems,
   showLoginSignup,
   showSearch,
+  backgroundColor,
+  darkMode,
   label,
 }) => {
   const location = useLocation();
@@ -52,12 +54,17 @@ const HamburgerMenu = ({
     }
   };
 
+  const background = darkMode ? "#02050fde" : backgroundColor;
+
   return (
     <div className="hamburger" ref={menuRef}>
       <div className="ham-label" onClick={() => setIsMenuOpen(!isMenuOpen)}>
         <HoveredText text={label} />
       </div>
-      <ul className={`hamburger-menu ${isMenuOpen ? "showMenu" : ""}`}>
+      <ul
+        style={{ backgroundColor: background }}
+        className={`hamburger-menu ${isMenuOpen ? "showMenu" : ""}`}
+      >
         {showNavData &&
           navData.map((item, index) => (
             <NavItem
@@ -107,7 +114,7 @@ const HamburgerMenu = ({
         )}
 
         {showLoginSignup && <LoginSignup />}
-        {isLoggedIn && (
+        {showLoginSignup && isLoggedIn && (
           <div className="account">
             <div className="details">
               <p>Account Details</p>

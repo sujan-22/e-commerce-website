@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import "./CartItems.css";
 import { ShopContext } from "../../Context/ShopContext";
 import { MdRemoveCircleOutline, MdAddCircleOutline } from "react-icons/md";
+import { HoveredText } from "../HamburgerMenu/HamburgerMenu";
 
 const CartItems = () => {
   const {
@@ -61,7 +62,7 @@ const CartItems = () => {
       })}
       <div className="cartitems-down">
         <div className="cartitems-total">
-          <h1>Cart Total</h1>
+          <p>Cart Total</p>
           <div>
             <div className="cartitems-total-item">
               <p>Subtotal</p>
@@ -69,23 +70,16 @@ const CartItems = () => {
             </div>
             <hr />
             <div className="cartitems-total-item">
-              <p>Shipping Fee</p>
+              <p>Shipping</p>
               <p>Free</p>
             </div>
             <hr />
             <div className="cartitems-total-item">
-              <h3>Total</h3>
+              <p>Total</p>
               <h3>${getTotalCartAmount()}</h3>
             </div>
           </div>
-          <button>PROCEED TO CHECKOUT</button>
-        </div>
-        <div className="cartitems-promocode">
-          <p>If you have a promo code, Enter it here</p>
-          <div className="cartitems-promobox">
-            <input type="text" placeholder="promo code" />
-            <button>Submit</button>
-          </div>
+          <HoveredText text={"proceed to checkout"} />
         </div>
       </div>
     </div>

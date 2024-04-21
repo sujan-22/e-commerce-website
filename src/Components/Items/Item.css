@@ -3,7 +3,6 @@
   width: 340px;
   border-radius: 10px;
   overflow: hidden !important;
-  color: white;
   margin: 2rem auto;
 }
 
@@ -38,7 +37,6 @@
 
 .add-to-cart-button {
   background: transparent;
-  color: #fff;
   border: none;
   font-weight: bold;
   cursor: pointer;

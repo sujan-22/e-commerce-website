@@ -1,25 +1,20 @@
 import React from "react";
 import "./Navbar.css";
-import { PiShoppingCartSimpleBold } from "react-icons/pi";
 import { GiOwl } from "react-icons/gi";
 import { useContext, useState, useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import Badge from "react-bootstrap/Badge";
+import { Link, useLocation } from "react-router-dom";
 import { ShopContext } from "../../Context/ShopContext";
 import HamburgerMenu from "../HamburgerMenu/HamburgerMenu";
-import { specialItems, navData } from "../../data";
-import SearchSidebar from "../SearchResults/SearchResults";
+import { CiLight, CiDark } from "react-icons/ci";
+import { navData } from "../../data";
 
-const Navbar = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const { getTotalCartItems, searchProducts, clearSearchResults } =
-    useContext(ShopContext);
-  const [searchQuery, setSearchQuery] = useState("");
+const Navbar = ({ toggleDarkMode, darkMode, backgroundColor }) => {
+  const { getTotalCartItems } = useContext(ShopContext);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [navbarColor, setNavbarColor] = useState("transparent");
-  const [showSidebar, setShowSidebar] = useState(false);
+  const loginCartBackgroundColor = darkMode ? "white" : "black";
+  const loginCartColor = darkMode ? "black" : "white";
   const location = useLocation();
-  const navigate = useNavigate();
 
   useEffect(() => {
     const handleResize = () => {
@@ -33,42 +28,13 @@ const Navbar = () => {
     };
   }, []);
 
-  const handleSearchButtonClick = () => {
-    setShowSidebar(true); // Open the sidebar when the search button is clicked
-  };
-
-  const handleSearchChange = (event) => {
-    const { value } = event.target;
-    setSearchQuery(value);
-    if (value.trim() !== "") {
-      searchProducts(value);
-      navigate("/store");
-    } else {
-      clearSearchResults();
-    }
-  };
-
   useEffect(() => {
-    const handleScroll = () => {
-      const scrolled = window.scrollY;
-      const isTop = scrolled === 0;
-      const isHomePage = location.pathname === "/";
-
-      if (isHomePage && isTop) {
-        setNavbarColor("#020308");
-      } else if (!isHomePage && isTop) {
-        setNavbarColor("transparent");
-      } else {
-        setNavbarColor("#02050fed");
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [location.pathname]);
+    if (darkMode) {
+      setNavbarColor("#02050fde");
+    } else {
+      setNavbarColor(backgroundColor);
+    }
+  }, [backgroundColor, darkMode]);
 
   return (
     <div className="navbar" style={{ backgroundColor: navbarColor }}>
@@ -81,31 +47,52 @@ const Navbar = () => {
                 to={item.to}
                 label={item.label}
                 currentPath={location.pathname}
-                setMenuOpen={setMenuOpen}
               />
             ))
           ) : (
             <div>
               <HamburgerMenu
                 showNavData={true}
+                darkMode={darkMode}
+                backgroundColor={backgroundColor}
                 showLoginSignup={true}
-                label={"category"}
+                label={"menu"}
               />
             </div>
           )}
         </div>
         <div className="nav-right">
           <div className="nav-search">
-            <HamburgerMenu showSearch={true} label={"search"} />
+            <HamburgerMenu
+              backgroundColor={backgroundColor}
+              showSearch={true}
+              showLoginSignup={false}
+              darkMode={darkMode}
+              label={"search"}
+            />
           </div>
-          <div className="nav-login-cart">
+          <div
+            className="nav-login-cart"
+            style={{
+              backgroundColor: loginCartBackgroundColor,
+              color: loginCartColor,
+            }}
+          >
             <Link to="/cart">CART {getTotalCartItems()}</Link>
           </div>
           {windowWidth > 1000 && (
             <div>
-              <HamburgerMenu showLoginSignup={true} label={"account"} />
+              <HamburgerMenu
+                backgroundColor={backgroundColor}
+                showLoginSignup={true}
+                label={"account"}
+                darkMode={darkMode}
+              />
             </div>
           )}
+          <div onClick={toggleDarkMode} style={{ cursor: "pointer" }}>
+            {darkMode ? <CiLight size={16} /> : <CiDark size={16} />}
+          </div>
         </div>
       </div>
       <div className="nav-center">
@@ -120,7 +107,7 @@ const Navbar = () => {
   );
 };
 
-const NavItem = ({ to, label, currentPath, setMenuOpen }) => {
+const NavItem = ({ to, label, currentPath }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseEnter = () => {
@@ -132,10 +119,7 @@ const NavItem = ({ to, label, currentPath, setMenuOpen }) => {
   };
 
   return (
-    <li
-      onClick={() => setMenuOpen(false)}
-      className={currentPath === to ? "active" : ""}
-    >
+    <li className={currentPath === to ? "active" : ""}>
       <Link
         to={to}
         style={{ textDecoration: "none", color: "gray" }}

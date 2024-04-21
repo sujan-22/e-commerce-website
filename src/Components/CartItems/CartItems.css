@@ -1,6 +1,5 @@
 .cartitems {
   margin: 100px 170px;
-  color: white;
 }
 
 .cartitems hr {
@@ -16,7 +15,6 @@
   align-items: center;
   gap: 75px;
   padding: 20px 0px;
-  color: #fff8f8;
   font-weight: 600px;
 }
 
@@ -25,7 +23,6 @@
 }
 
 .cartitems-format svg {
-  font-size: 30px;
   cursor: pointer;
   margin: 0px;
 }
@@ -47,8 +44,6 @@
 .cartitems-quantity {
   background: transparent;
   border: none;
-  color: white;
-  font-size: large;
 }
 
 .cartitems-down {
@@ -68,70 +63,6 @@
   display: flex;
   justify-content: space-between;
   padding: 15px 0px;
-}
-
-.cartitems-total button {
-  width: 262px;
-  height: 58px;
-  outline: none;
-  background: transparent;
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-  border: 1px solid #ff0000;
-  border-radius: 30px;
-  transition: opacity 0.3s;
-}
-
-.cartitems-total button:hover {
-  opacity: 0.6;
-}
-
-.cartitems-promocode {
-  flex: 1;
-  font-weight: 16px;
-  font-weight: 500;
-}
-
-.cartitems-promocode p {
-  color: #555;
-}
-
-.cartitems-promobox {
-  width: 504px;
-  margin-top: 15px;
-  padding-left: 20px;
-  height: 58px;
-  background: transparent;
-  border: 1px solid #f70000;
-  border-radius: 30px;
-}
-
-.cartitems-promobox input {
-  border: none;
-  outline: none;
-  background: transparent;
-  width: 330px;
-  height: 50px;
-  padding: 10px;
-}
-
-.cartitems-promobox button {
-  width: 170px;
-  height: 58px;
-  outline: none;
-  background: transparent;
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-  border: none;
-  border-radius: 30px;
-  transition: opacity 0.3s;
-  margin: auto -15px;
-}
-
-.cartitems-promobox button:hover {
-  opacity: 0.6;
 }
 
 @media (max-width: 1280px) {
@@ -165,25 +96,6 @@
 
   .cartitems-total {
     margin: 0;
-  }
-
-  .cartitems-total button {
-    max-width: 200px;
-    height: 45px;
-  }
-
-  .cartitems-promobox {
-    width: auto;
-    max-width: 500px;
-  }
-
-  .cartitems-promobox input {
-    width: 100%;
-  }
-
-  .cartitems-promobox button {
-    width: 120px;
-    margin-left: -125px;
   }
 }
 
@@ -238,7 +150,7 @@
   }
 
   .quantity-controls > * {
-    margin: 0 10px; /* Adjust margin as needed */
+    margin: 0 10px;
   }
 
   .cartitems-quantity {
