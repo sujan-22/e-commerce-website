@@ -20,7 +20,6 @@ code {
 .dark-mode {
   background-color: #02050f;
   color: white;
-  height: 100vh;
 }
 
 /* Light mode specific styles */
