@@ -6,89 +6,36 @@
   display: flex;
   flex-direction: column;
   position: fixed;
-  inset: 75px 70% 0 0; /* Adjust inset to start after the navbar */
+  inset: 120px 70% 0 0; /* Adjust inset to start after the navbar */
   gap: 20px;
   background-color: #02050fed;
-  height: calc(100vh - 75px); /* Adjust height to fill the remaining viewport */
+  height: calc(100vh - 120px);
   transform: translateX(-100%);
   transition: 0.9s;
   z-index: 4;
   list-style: none;
-  padding-left: 0;
   justify-content: flex-start;
   align-items: flex-start;
-  padding: 10px;
+  padding: 10px 30px;
   min-width: 300px;
+  margin: 0;
+}
+
+.no-results {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .showMenu {
   transform: translateX(0);
 }
-
-.Hamburger {
-  cursor: pointer;
-  display: block;
-  position: fixed;
-  left: 10px;
-  top: 19px;
-  z-index: 6;
+.ham-label {
+  color: gray;
 }
-
-.nav-icon {
-  color: white;
-  gap: 10px;
-  margin: auto 10px;
-}
-
-.ham {
-  display: block;
-  background-color: #e7e7e7;
-  border-radius: 50px;
-  height: 2.5px;
-  width: 30px;
-  margin: 6px;
-  transition: 0.7s;
-}
-.first {
-  rotate: -225deg;
-  position: relative;
-  top: 4px;
-  transition: 0.9s;
-}
-.second {
-  display: none;
-}
-.Third {
-  position: relative;
-  bottom: 4px;
-  rotate: 225deg;
-  transition: 0.9s;
-}
-
 .shop-category {
   flex: 1;
-}
-
-.nav_login_cart button .icon {
-  vertical-align: middle;
-  margin-right: 5px;
-}
-
-.user-info {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-}
-
-.user-email {
-  color: #0055ff;
-}
-.user-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  vertical-align: middle;
 }
 
 /* HamburgerMenu.css */
@@ -103,6 +50,7 @@
 }
 
 /* Style for the form elements */
+ul .inputField,
 .FormContainer input,
 .FormContainer button {
   padding: 10px;
@@ -114,11 +62,12 @@
   border-radius: unset;
 }
 
+ul .inputField,
 .FormContainer input {
   border-bottom: 1px solid gray;
   text-transform: uppercase;
   display: block;
-  width: 100%;
+  width: 80%;
   padding: 10px;
   margin: 5px 0;
   background: transparent;
@@ -171,87 +120,60 @@
     display: flex;
     flex-direction: column;
     position: fixed;
-    inset: 75px 0 0 0; /* Adjust inset to start after the navbar */
+    inset: 120px 0 0 0; /* Adjust inset to start after the navbar */
     gap: 20px;
-    height: calc(
-      100vh - 75px
-    ); /* Adjust height to fill the remaining viewport */
+    height: calc(100vh - 120px);
     transform: translateX(-100%);
     transition: 0.9s;
     z-index: 4;
     list-style: none;
-    padding-left: 0;
     justify-content: flex-start;
     align-items: flex-start;
-    padding: 10px;
     min-width: 300px;
   }
 
   .showMenu {
     transform: translateX(0);
   }
-
-  .Hamburger {
-    z-index: 7;
-    left: 10px;
-    width: fit-content;
-  }
   .hamburger-menu li ul {
-    margin: 0;
     padding: 0;
     list-style: none;
   }
 
   .hamburger-menu li ul li {
-    padding: 5px 0;
-    color: antiquewhite;
+    padding: 5px 5px;
+    color: rgb(255, 255, 255);
   }
 
   .hamburger-menu li ul li a {
-    color: antiquewhite;
+    color: rgb(255, 255, 255);
     text-decoration: none;
     padding: 5px 15px;
     display: block;
   }
 }
 
-.nav_login_cart button {
-  cursor: pointer;
-  width: auto;
-  border: unset;
-  border-radius: 50px;
-  color: #767676;
-  z-index: 1;
-  background: transparent;
-  position: relative;
-  font-weight: 700;
-  text-transform: uppercase;
-  -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
-  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
-  transition: all 250ms;
-  overflow: hidden;
-  font-size: 14px;
+@media (max-width: 500px) {
+  .hamburger-menu {
+    padding: 10px;
+  }
 }
 
-.nav_login_cart button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 0;
-  border-radius: 15px;
-  background-color: #212121;
-  z-index: -1;
-  -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
-  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
-  transition: all 250ms;
+.account {
+  margin-top: 20px;
 }
 
-.nav_login_cart button:hover {
-  color: #e8e8e8;
+.account .details {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
 }
 
-.nav_login_cart button:hover::before {
-  width: 100%;
+.account .details .account-heading {
+  font-weight: bold;
+}
+
+.account .user-details {
+  margin-top: 10px;
 }

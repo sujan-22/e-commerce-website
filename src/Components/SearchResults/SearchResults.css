@@ -1,0 +1,27 @@
+.search-results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  min-height: 110px;
+  overflow-y: auto;
+  width: 100%; /* Set the container to full width */
+}
+
+.search-results-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%; /* Make sure each item spans the full width */
+  max-width: 400px; /* Example max-width for each item */
+  padding: 0 20px; /* Add padding to prevent overflow */
+  box-sizing: border-box; /* Include padding in width calculation */
+  gap: 10px;
+}
+
+.search-results-image {
+  width: 90px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+}

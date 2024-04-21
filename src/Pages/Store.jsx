@@ -6,9 +6,7 @@ import HamburgerMenu from "../Components/HamburgerMenu/HamburgerMenu";
 const Store = () => {
   return (
     <div className="store">
-      <div className="categories">
-        <HamburgerMenu />
-      </div>
+      <div className="categories"></div>
       <div className="shop-category">
         <Outlet />
       </div>

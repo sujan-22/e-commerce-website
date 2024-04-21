@@ -1,31 +1,31 @@
 import { MdLightbulb } from "react-icons/md";
-import { FaMobile, FaHome, FaStore, FaCouch } from "react-icons/fa";
+import { FaMobile, FaHome, FaCouch } from "react-icons/fa";
 import { GiWoodFrame } from "react-icons/gi";
 import { IoBicycleOutline } from "react-icons/io5";
 
 const navData = [
   {
-    to: "/store/electronics",
+    to: "/electronics",
     label: "Electronics",
     icon: FaMobile,
   },
   {
-    to: "/store/home-decoration",
+    to: "/home-decoration",
     label: "Home Decoration",
     icon: GiWoodFrame,
   },
   {
-    to: "/store/furniture",
+    to: "/furniture",
     label: "Furniture",
     icon: FaCouch,
   },
   {
-    to: "/store/sports",
+    to: "/sports",
     label: "Sports",
     icon: IoBicycleOutline,
   },
   {
-    to: "/store/lighting",
+    to: "/lighting",
     label: "Lightning",
     icon: MdLightbulb,
   },
@@ -36,11 +36,6 @@ const specialItems = [
     to: "/",
     label: "Home",
     icon: FaHome,
-  },
-  {
-    to: "/store",
-    label: "Store",
-    icon: FaStore,
   },
 ];
 

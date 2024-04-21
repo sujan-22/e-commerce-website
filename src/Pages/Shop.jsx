@@ -88,15 +88,15 @@ const Shop = () => {
   const getCategoryPath = (categoryName) => {
     switch (categoryName) {
       case "electronics":
-        return "/store/electronics";
+        return "/electronics";
       case "home-decoration":
-        return "/store/home-decoration";
+        return "/home-decoration";
       case "furniture":
-        return "/store/furniture";
+        return "/furniture";
       case "sports":
-        return "/store/sports";
+        return "/sports";
       case "lighting":
-        return "/store/lighting";
+        return "/lighting";
       default:
         return "/";
     }

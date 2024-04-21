@@ -1,88 +1,31 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./HamburgerMenu.css";
 import { navData, specialItems } from "../../data";
+import LoginSignup from "../LoginSignup/LoginSignup";
+import { ShopContext } from "../../Context/ShopContext";
+import SearchResults from "../SearchResults/SearchResults";
 
-const HamburgerMenu = () => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+const HamburgerMenu = ({
+  showNavData,
+  showSpecialItems,
+  showLoginSignup,
+  showSearch,
+  label,
+}) => {
   const location = useLocation();
-  const [hovered, setHoverd] = useState(false);
-  const [hovered1, setHoverd1] = useState(false);
-  const [hovered2, setHoverd2] = useState(false);
   const menuRef = useRef(null);
   const isLoggedIn = localStorage.getItem("auth_token");
-  const [formData, setFormData] = useState({
-    firstname: "",
-    lastname: "",
-    email: "",
-    password: "",
-  });
-  const [showContainer, setShowContainer] = useState(true);
-  const [isLogin, setIsLogin] = useState(true);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { userData, searchProducts, searchResults, clearSearchResults } =
+    useContext(ShopContext);
 
-  const backendUrl = process.env.REACT_APP_BACKEND_URL;
-
-  const changeHandler = (e) => {
-    const { name, value } = e.target;
-    const transformedValue = name === "email" ? value.toLowerCase() : value;
-    setFormData({ ...formData, [name]: transformedValue });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setShowContainer(false);
-    let url = isLogin ? `${backendUrl}/login` : `${backendUrl}/signup`;
-    console.log(url);
-    try {
-      const response = await fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-      const responseData = await response.json();
-      if (responseData.success) {
-        localStorage.setItem("auth_token", responseData.token);
-        window.location.replace("/");
-        toggleForm();
-      } else {
-        alert(responseData.errors);
-        setShowContainer(true);
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      setShowContainer(true);
-    }
-  };
-
-  const toggleForm = () => {
-    setIsLogin(!isLogin);
-    setFormData({
-      firstname: "",
-      lastname: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-    });
-  };
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
-        hideMenu();
+        setIsMenuOpen(false);
       }
     };
 
@@ -93,150 +36,107 @@ const HamburgerMenu = () => {
     };
   }, []);
 
-  var showMenu = () => {
-    var bar = document.getElementsByClassName("ham");
-    var ham = document.getElementsByClassName("hamburger-menu");
-    bar[0].classList.toggle("first");
-    bar[1].classList.toggle("second");
-    bar[2].classList.toggle("Third");
-    ham[0].classList.toggle("showMenu");
+  // Logout function
+  const handleLogout = () => {
+    localStorage.removeItem("auth_token");
+    window.location.replace("/");
   };
 
-  var hideMenu = () => {
-    var bar = document.getElementsByClassName("ham");
-    var ham = document.getElementsByClassName("hamburger-menu");
-    bar[0].classList.remove("first");
-    bar[1].classList.remove("second");
-    bar[2].classList.remove("Third");
-    ham[0].classList.remove("showMenu");
+  const handleSearchChange = (event) => {
+    const { value } = event.target;
+    setSearchQuery(value);
+    if (value.trim() !== "") {
+      searchProducts(value);
+    } else {
+      clearSearchResults();
+    }
   };
 
   return (
     <div className="hamburger" ref={menuRef}>
-      <div className="Hamburger" onClick={showMenu}>
-        <span className="ham"></span>
-        <span className="ham"></span>
-        <span className="ham"></span>
+      <div className="ham-label" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        <HoveredText text={label} />
       </div>
-      <ul className="hamburger-menu">
-        {windowWidth > 800 ? (
+      <ul className={`hamburger-menu ${isMenuOpen ? "showMenu" : ""}`}>
+        {showNavData &&
           navData.map((item, index) => (
             <NavItem
               key={index}
               to={item.to}
               label={item.label}
               currentPath={location.pathname}
-              onClick={hideMenu}
-              icon={item.icon}
+              onClick={() => setIsMenuOpen(false)}
             />
-          ))
-        ) : (
+          ))}
+        {showSpecialItems &&
+          specialItems.map((item, index) => (
+            <NavItem
+              key={index}
+              to={item.to}
+              label={item.label}
+              currentPath={location.pathname}
+              onClick={() => setIsMenuOpen(false)}
+            />
+          ))}
+        {showSearch && (
           <>
-            {specialItems.map((item, index) => (
-              <NavItem
-                key={index}
-                to={item.to}
-                label={item.label}
-                currentPath={location.pathname}
-                onClick={hideMenu}
-                icon={item.icon}
-              />
-            ))}
-            <li>
-              <span style={{ display: "none" }}>Store</span>
-              <ul>
-                {navData.map((item, index) => (
-                  <NavItem
+            <input
+              className="inputField"
+              name="search"
+              value={searchQuery}
+              onChange={handleSearchChange}
+              type="text"
+              placeholder="TYPE TO SEARCH"
+            />
+            {searchQuery && searchResults.length > 0 ? (
+              <div className="search-results">
+                {searchResults.map((product, index) => (
+                  <SearchResults
+                    product={product}
                     key={index}
-                    to={item.to}
-                    label={item.label}
-                    currentPath={location.pathname}
-                    onClick={hideMenu}
-                    icon={item.icon}
+                    closeMenu={() => setIsMenuOpen(!isMenuOpen)}
                   />
                 ))}
-              </ul>
-            </li>
-            <li></li>
+              </div>
+            ) : (
+              searchQuery && (
+                <div className="no-results">No matching products found!</div>
+              )
+            )}
           </>
         )}
-        {!isLoggedIn && (
-          <div className="FormContainer">
-            <div className="loginSignupButtons">
-              <button
-                onMouseEnter={() => setHoverd1(true)}
-                onMouseLeave={() => setHoverd1(false)}
-                className={isLogin ? "active" : ""}
-                onClick={() => setIsLogin(true)}
-              >
-                {hovered1 ? "{LOGIN}" : "LOGIN"}
-              </button>
-              <button
-                onMouseEnter={() => setHoverd2(true)}
-                onMouseLeave={() => setHoverd2(false)}
-                className={!isLogin ? "active" : ""}
-                onClick={() => setIsLogin(false)}
-              >
-                {hovered2 ? "{SIGNUP}" : "SIGNUP"}
-              </button>
-            </div>
-            <form onSubmit={handleSubmit}>
-              {!isLogin && (
-                <>
-                  <input
-                    className="inputField"
-                    name="firstname"
-                    value={formData.firstname}
-                    onChange={changeHandler}
-                    type="text"
-                    placeholder="First Name"
-                  />
-                  <input
-                    className="inputField"
-                    name="lastname"
-                    value={formData.lastname}
-                    onChange={changeHandler}
-                    type="text"
-                    placeholder="Last Name"
-                  />
-                </>
-              )}
-              <input
-                className="inputField"
-                name="email"
-                value={formData.email}
-                onChange={changeHandler}
-                type="email"
-                placeholder="Email"
-              />
-              <input
-                className="inputField"
-                name="password"
-                value={formData.password}
-                onChange={changeHandler}
-                type="password"
-                placeholder="Password"
-                autoCapitalize="none"
-              />
-              <button
-                onMouseEnter={() => setHoverd(true)}
-                onMouseLeave={() => setHoverd(false)}
-                type="submit"
-                disabled={!showContainer}
-              >
-                {hovered ? "{SUBMIT}" : "SUBMIT"}
-              </button>
-            </form>
-          </div>
-        )}
+
+        {showLoginSignup && <LoginSignup />}
         {isLoggedIn && (
           <div className="account">
-            <Link to="/account">
-              <button>ACCOUNT</button>
-            </Link>
+            <div className="details">
+              <p>Account Details</p>
+              <div className="user-details">
+                <p>
+                  {userData.fname} {userData.lname}
+                </p>
+                <p>{userData.email}</p>
+              </div>
+            </div>
+            <p className="logout-button" onClick={handleLogout}>
+              <HoveredText text={"logout"} />
+            </p>
           </div>
         )}
       </ul>
+    </div>
+  );
+};
+
+export const HoveredText = ({ text }) => {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{ cursor: "pointer" }}
+    >
+      {hovered ? `{${text}}` : text}
     </div>
   );
 };
@@ -256,7 +156,7 @@ const NavItem = ({ to, label, currentPath, onClick, icon }) => {
     <li className={currentPath === to ? "active" : ""} onClick={onClick}>
       <Link
         to={to}
-        style={{ textDecoration: "none", color: "white" }}
+        style={{ textDecoration: "none", color: "gray" }}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >

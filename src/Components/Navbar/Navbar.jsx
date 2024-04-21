@@ -7,7 +7,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Badge from "react-bootstrap/Badge";
 import { ShopContext } from "../../Context/ShopContext";
 import HamburgerMenu from "../HamburgerMenu/HamburgerMenu";
-import { specialItems } from "../../data";
+import { specialItems, navData } from "../../data";
+import SearchSidebar from "../SearchResults/SearchResults";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -16,6 +17,7 @@ const Navbar = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [navbarColor, setNavbarColor] = useState("transparent");
+  const [showSidebar, setShowSidebar] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -30,6 +32,10 @@ const Navbar = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const handleSearchButtonClick = () => {
+    setShowSidebar(true); // Open the sidebar when the search button is clicked
+  };
 
   const handleSearchChange = (event) => {
     const { value } = event.target;
@@ -66,47 +72,50 @@ const Navbar = () => {
 
   return (
     <div className="navbar" style={{ backgroundColor: navbarColor }}>
-      <ul className={`nav-menu ${menuOpen ? "visible" : ""}`}>
-        {specialItems.map((item, index) => (
-          <NavItem
-            key={index}
-            to={item.to}
-            label={item.label}
-            currentPath={location.pathname}
-            setMenuOpen={setMenuOpen}
-          />
-        ))}
-      </ul>
-      <div className="nav-logo">
-        <Link to="/" style={{ textDecoration: "none", display: "contents" }}>
-          <GiOwl className="svg" />
-          <p>NIGHT OWL</p>
-        </Link>
-      </div>
-
-      <div className="nav-search">
-        <input
-          className="inputField"
-          name="search"
-          value={searchQuery}
-          onChange={handleSearchChange}
-          type="text"
-          placeholder="SEARCH"
-        />
-      </div>
-      <div className="nav-login-cart">
-        <Link to="/cart">
-          <PiShoppingCartSimpleBold className="cart-icon" />
-        </Link>
-        <Badge pill variant="danger" className="nav-cart-count">
-          {getTotalCartItems()}
-        </Badge>
-      </div>
-      {windowWidth <= 800 && !location.pathname.includes("/store") && (
-        <div className="hamb">
-          <HamburgerMenu />
+      <div className="nav-row">
+        <div className="nav-left">
+          {windowWidth > 1000 ? (
+            navData.map((item, index) => (
+              <NavItem
+                key={index}
+                to={item.to}
+                label={item.label}
+                currentPath={location.pathname}
+                setMenuOpen={setMenuOpen}
+              />
+            ))
+          ) : (
+            <div>
+              <HamburgerMenu
+                showNavData={true}
+                showLoginSignup={true}
+                label={"category"}
+              />
+            </div>
+          )}
         </div>
-      )}
+        <div className="nav-right">
+          <div className="nav-search">
+            <HamburgerMenu showSearch={true} label={"search"} />
+          </div>
+          <div className="nav-login-cart">
+            <Link to="/cart">CART {getTotalCartItems()}</Link>
+          </div>
+          {windowWidth > 1000 && (
+            <div>
+              <HamburgerMenu showLoginSignup={true} label={"account"} />
+            </div>
+          )}
+        </div>
+      </div>
+      <div className="nav-center">
+        <div className="logo-wrapper">
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <GiOwl className="svg" size={"26"} />
+            <p>NIGHT OWL</p>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };
