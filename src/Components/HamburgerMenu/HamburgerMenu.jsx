@@ -141,7 +141,7 @@ export const HoveredText = ({ text }) => {
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      style={{ cursor: "pointer" }}
+      style={{ cursor: "pointer", color: "gray" }}
     >
       {hovered ? `{${text}}` : text}
     </div>

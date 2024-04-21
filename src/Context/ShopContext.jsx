@@ -110,11 +110,11 @@ const ShopContextProvider = (props) => {
           (product) => product.id === Number(item)
         );
         if (itemInfo) {
-          totalAmount += itemInfo.price * cartItems[item]; // Use the 'price' property
+          totalAmount += itemInfo.price * cartItems[item];
         }
       }
     }
-    return totalAmount;
+    return Number(totalAmount.toFixed(2));
   };
 
   const getTotalCartItems = () => {
